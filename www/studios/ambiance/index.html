@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambiance Wallpaper | Lemon Slice Studios</title>
+    <script src="../js/tailwind-min.js"></script>
+    <style>
+        .split-bg {
+            background: linear-gradient(90deg, #212121 50%, #f5f5f5 50%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #3b82f6, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Nav shrink effect */
+        nav {
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav.nav-shrunk {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        nav.nav-shrunk .logo-container svg {
+            width: 32px;
+            height: 32px;
+        }
+    </style>
+    <link rel="icon" type="image/svg+xml"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='17' viewBox='0 0 22 17'><path fill='%232196F3' d='M1.02 17c-0.42 0-0.72-0.18-0.9-0.55-0.19-0.37-0.15-0.72 0.1-1.05l4-5.33c0.1-0.13 0.22-0.23 0.36-0.3 0.14-0.06 0.29-0.1 0.44-0.1 0.15 0 0.3 0.04 0.43 0.1 0.15 0.07 0.27 0.17 0.37 0.3L9.52 15h7.5l-5-6.65-1.7 2.25c-0.2 0.27-0.44 0.4-0.7 0.41-0.27 0.01-0.5-0.06-0.7-0.21-0.2-0.15-0.34-0.35-0.4-0.61-0.07-0.26 0-0.52 0.2-0.79l2.5-3.33c0.1-0.13 0.22-0.23 0.36-0.3 0.14-0.06 0.29-0.1 0.44-0.1 0.15 0 0.3 0.04 0.43 0.1 0.15 0.07 0.27 0.17 0.37 0.3l7 9.33c0.25 0.33 0.28 0.68 0.1 1.05-0.19 0.37-0.49 0.55-0.9 0.55h-18Z'/><path fill='%23FFC107' d='M21.02 3c0 1.66-1.35 3-3 3-1.66 0-3-1.34-3-3s1.34-3 3-3c1.65 0 3 1.34 3 3Z'/></svg>">
+    <script async src="https://stats.lemonslice.de/script.js"
+            data-website-id="8541e245-eff0-4999-a62a-1a5cdf2f11aa"></script>
+</head>
+<body class="bg-slate-50 font-sans antialiased text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+
+<!-- Header -->
+<nav id="main-nav"
+     class="fixed top-0 left-0 w-full z-50 bg-slate-50/80 backdrop-blur-md dark:bg-slate-950/80 p-6 flex justify-between items-center transition-all duration-300">
+    <a href="../">
+        <div class="flex items-center gap-2">
+            <div class="logo-container transition-all duration-300">
+                <svg width="64" height="64" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg"
+                     class="transition-all duration-300">
+                    <path d="M364.804 485.03C211.01 487.492 135.444 305.222 234.41 190.442C339.02 69.1187 530.222 141.676 544.22 296.872C545.378 309.59 544.248 321.182 544.91 333.618C550.622 334.618 562.002 333.648 568.4 333.614L650.812 333.672C658.794 333.75 668.572 335.132 676.39 333.618C684.084 310.702 687.766 282.422 697.058 259.988C699.75 253.484 721.24 245.832 728.67 242.706L804.306 211.39C810.364 208.866 818.426 205.354 824.65 203.538C828.384 217.154 834.412 231.976 838.834 245.866C826.766 251.806 817.042 255.058 804.524 259.968L765.614 275.58C758.902 278.208 738.406 285.53 733.388 289.36C729.162 302.684 726.532 321.556 722.288 333.618C731.656 334.812 776.232 334.866 786.58 333.618L740.3 786.224C737.332 816.662 739.81 881.682 698.158 885.412C684.31 886.652 668.886 886.072 654.836 886.054L488.222 886.04C459.26 886.084 407.062 892.984 401.214 852.586C399.69 843.052 399.028 833.238 398.166 823.588L393.198 767.842C385.636 691.29 379.382 614.638 371.09 538.206C370.258 530.538 366.6 489.514 364.804 485.03Z"
+                          fill="#DEDEDE"/>
+                    <path d="M364.804 485.03C211.01 487.492 135.444 305.222 234.41 190.442C339.02 69.1187 530.222 141.676 544.22 296.872C545.378 309.59 544.248 321.182 544.91 333.618C541.97 333.2 533.268 333.544 529.708 333.568L499.998 333.618C494.416 333.014 475.888 333.634 469.008 333.64L399.814 333.618H353.18V338.904C346.578 342.43 290.808 399.556 279.56 413.802C303.082 432.996 329.866 445.428 360.796 444.936C363.59 454.032 365.438 475.49 364.804 485.03Z"
+                          fill="#FDC901"/>
+                    <path d="M364.804 485.03C211.01 487.492 135.444 305.222 234.41 190.442C339.02 69.1187 530.222 141.676 544.22 296.872C545.378 309.59 544.248 321.182 544.91 333.618C541.97 333.2 533.268 333.544 529.708 333.568L499.998 333.618L502.112 319.246C502.394 318.45 502.134 306.932 502.112 305.184C500.086 274.436 490.226 243.49 468.368 220.98C466.866 218.028 461.084 212.116 458.33 210.086C435.962 188.084 407.134 177.179 376.336 173.517C373.56 173.309 357.284 173.173 355.24 173.517C324.438 178.758 297.674 186.357 275.102 210.086C271.336 213.714 268.606 217.008 265.248 220.98C243.088 248.128 234.338 270.016 232.462 305.184C232.436 306.834 232.112 318.54 232.462 319.246C235.854 353.35 246.116 377.732 268.676 403.342C272.256 407.266 275.462 410.384 279.56 413.802C303.082 432.996 329.866 445.428 360.796 444.936C363.59 454.032 365.438 475.49 364.804 485.03Z"
+                          fill="#EFB204"/>
+                    <path d="M468.368 220.98C490.226 243.49 500.086 274.436 502.112 305.184C467.394 304.64 432.01 305.466 397.178 305.184C394.928 302.654 392.442 299.432 390.27 296.766C393.18 293.432 396.336 290.284 399.602 287.294C420.702 267.97 446.506 236.204 468.368 220.98Z"
+                          fill="#FDE464"/>
+                    <path d="M355.24 173.517C356.958 173.592 358.548 173.379 359.846 174.18C360.292 188.277 362.966 285.356 356.722 288.828C354.778 288.632 281.644 215.882 275.102 210.086C297.674 186.357 324.438 178.758 355.24 173.517Z"
+                          fill="#FDE464"/>
+                    <path d="M265.248 220.98C290.53 245.586 317.844 273.234 343.966 296.766C342.4 299.52 340.778 302.5 339.138 305.184C303.648 305.802 267.946 305.612 232.462 305.184C234.338 270.016 243.088 248.128 265.248 220.98Z"
+                          fill="#FDE464"/>
+                    <path d="M376.336 173.517C407.134 177.179 435.962 188.084 458.33 210.086C447.648 218.39 382.46 286.594 378.964 287.428C374.806 286.918 374.668 283.6 374.708 279.966C374.84 268.412 372.924 180.612 374.736 174.079L376.336 173.517Z"
+                          fill="#FDE464"/>
+                    <path d="M232.462 319.246L233.19 318.518C248.742 319.468 261.216 319.246 276.764 319.236L339.138 319.246C340.986 322.02 342.324 324.232 343.966 327.136C339.546 330.68 335.228 334.226 331.38 338.41C322.236 348.354 277.042 398.538 268.676 403.342C246.116 377.732 235.854 353.35 232.462 319.246Z"
+                          fill="#FDE464"/>
+                    <path d="M397.178 319.246L474.33 319.244C478.24 319.244 500.45 318.178 502.112 319.246L499.998 333.618C494.416 333.014 475.888 333.634 469.008 333.64L399.814 333.618C396.464 331.606 394.51 330.298 392.222 327.136C393.988 323.848 394.822 322.144 397.178 319.246Z"
+                          fill="#FDE464"/>
+                    <path d="M627.54 524.408L724.936 524.482C727.558 524.498 733.442 524.696 735.76 524.408C734.354 543.028 731.788 563.154 729.806 581.802L709.45 782.37C708.028 797.388 706.818 813.548 704.95 828.444H424.182C422.324 790.686 418.926 753.548 416.11 715.912L411.76 662.024C410.476 645.13 409.58 628.264 407.648 611.396C409.294 611.112 415.076 616.582 416.632 617.846C487.764 675.622 589.852 641.838 618.974 556.878C622.62 546.242 624.02 535.356 627.308 525.118L627.54 524.408Z"
+                          fill="#3b82f6"/>
+                    <path d="M399.814 524.408C410.024 523.998 423.034 524.382 433.422 524.388L584.378 524.402C598.468 524.398 613.568 524.064 627.54 524.408L627.308 525.118C624.02 535.356 622.62 546.242 618.974 556.878C589.852 641.838 487.764 675.622 416.632 617.846C415.076 616.582 409.294 611.112 407.648 611.396C402.862 592.176 402.482 546.83 399.814 524.408Z"
+                          fill="#FDC901"/>
+                    <path d="M676.39 333.618C680.19 333.002 720.542 333.31 722.288 334.834C718.248 348.982 715.064 363.66 711.544 377.998L683.89 488.446C681.178 498.894 675.924 514.244 676.39 524.408L720.122 524.362C722.778 524.354 734.136 524.014 735.76 524.408C733.442 524.696 727.558 524.498 724.936 524.482L627.54 524.408C630.31 521.55 672.254 354.112 676.39 333.618Z"
+                          fill="#C4C4C2"/>
+                    <path d="M353.18 338.904C353.172 372.526 362.69 411.69 360.796 444.936C329.866 445.428 303.082 432.996 279.56 413.802C290.808 399.556 346.578 342.43 353.18 338.904Z"
+                          fill="#FDE464"/>
+                </svg>
+
+            </div>
+            <span class="font-bold text-lg tracking-tight">Lemon Slice <span
+                    class="text-slate-500">Studios</span></span>
+
+        </div>
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=de.lemonslice.ambiance" target="_blank"
+       rel="noopener noreferrer" class="inline-block">
+        <img alt="Get it on Google Play"
+             src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+             style="height: 60px;">
+    </a>
+</nav>
+
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-6 py-40 flex flex-col items-center text-center">
+
+    <h1 class="text-6xl md:text-8xl font-extrabold mb-6 tracking-tight text-gradient">
+        Ambiance
+    </h1>
+
+    <h2 class="text-2xl md:text-3xl font-extrabold mb-10 tracking-tight dark:text-white">
+        The wallpaper that <span class="text-gradient">knows the mood.</span>
+    </h2>
+
+    <p class="text-xl text-slate-600 max-w-2xl mb-10 dark:text-slate-400">
+        Automatically switch between light and dark backgrounds to match your system theme. Private, battery-efficient,
+        and beautiful.
+    </p>
+
+    <!-- App Preview Mockup -->
+    <div class="relative w-full max-w-4xl h-96 rounded-3xl overflow-hidden shadow-2xl border-8 border-slate-900 dark:border-slate-800 split-bg mb-20 flex">
+        <div class="w-1/2 flex items-center justify-center">
+            <span class="hidden md:block text-slate-600 font-bold opacity-20 text-4xl uppercase tracking-widest">Dark<br/>Mode</span>
+        </div>
+        <div class="w-1/2 flex items-center justify-center">
+            <span class="hidden md:block text-slate-400 font-bold opacity-20 text-4xl uppercase tracking-widest">Light<br/>Mode</span>
+        </div>
+        <!-- Central Divider Phone -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="w-48 h-80 bg-white dark:bg-slate-900 rounded-[3rem] border-4 border-slate-800 dark:border-slate-700 shadow-xl relative overflow-hidden">
+                <div class="absolute inset-0 flex">
+                    <img src="wp.png" alt="Wallpaper Preview" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed dark:text-slate-400">
+        <em class="font-semibold text-slate-900 dark:text-white not-italic">Your device. Your theme. Your ambiance.</em>
+        <br><br>
+        Most wallpapers are static. Ambiance Wallpaper is alive to your system's rhythm, automatically shifting between
+        light and dark aesthetics as your day evolves.
+    </p>
+
+</section>
+
+<!-- Screenshots Section -->
+<section class="max-w-7xl mx-auto px-6 py-24">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 dark:text-white">
+        Simple. <span class="text-gradient">Powerful.</span>
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-12">
+        <!-- Screenshot 1 -->
+        <div class="flex flex-col items-center">
+            <div class="w-64 h-auto overflow-hidden mb-6">
+                <!-- Light mode screenshot -->
+                <img src="screenshot1-light.png" alt="Screenshot 1 Light" class="w-full h-auto block dark:hidden">
+                <!-- Dark mode screenshot -->
+                <img src="screenshot1-dark.png" alt="Screenshot 1 Dark" class="w-full h-auto hidden dark:block">
+            </div>
+            <p class="text-center text-slate-600 dark:text-slate-400 max-w-xs">
+                Open Ambiance Wallpaper. Select your "Light Mode" and "Dark Mode" photos, or
+                use our beautiful default images.
+            </p>
+        </div>
+
+        <!-- Screenshot 2 -->
+        <div class="flex flex-col items-center">
+            <div class="w-64 h-auto overflow-hidden mb-6">
+                <!-- Light mode screenshot -->
+                <img src="screenshot2-light.png" alt="Screenshot 2 Light" class="w-full h-auto block dark:hidden">
+                <!-- Dark mode screenshot -->
+                <img src="screenshot2-dark.png" alt="Screenshot 2 Dark" class="w-full h-auto hidden dark:block">
+            </div>
+            <p class="text-center text-slate-600 dark:text-slate-400 max-w-xs">
+                Set it once, and let your phone match your mood, all day and all night.
+                No more manual switching.
+            </p>
+        </div>
+
+        <!-- Screenshot 3 -->
+        <div class="flex flex-col items-center">
+            <div class="w-64 h-auto overflow-hidden mb-6">
+                <!-- Light mode screenshot -->
+                <img src="screenshot3-light.png" alt="Screenshot 3 Light" class="w-full h-auto block dark:hidden">
+                <!-- Dark mode screenshot -->
+                <img src="screenshot3-dark.png" alt="Screenshot 3 Dark" class="w-full h-auto hidden dark:block">
+            </div>
+            <p class="text-center text-slate-600 dark:text-slate-400 max-w-xs">
+                When your device shifts to or from Dark Mode—whether manually, by schedule, or based on
+                sunset—your wallpaper follows instantly.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="bg-white dark:bg-slate-900 py-24">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+        <div class="space-y-4">
+            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 text-2xl">
+                🌗
+            </div>
+            <h3 class="text-xl font-bold dark:text-white">Automatic Sync</h3>
+            <p class="text-slate-600 dark:text-slate-400">Syncs perfectly with Android's system dark mode. Switch
+                instantly without opening the app.</p>
+        </div>
+        <div class="space-y-4">
+            <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center text-green-600 dark:text-green-400 text-2xl">
+                🔒
+            </div>
+            <h3 class="text-xl font-bold dark:text-white">Privacy First</h3>
+            <p class="text-slate-600 dark:text-slate-400">Your photos never leave your device. No cloud, no trackers, no
+                permissions you don't need.</p>
+        </div>
+        <div class="space-y-4">
+            <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center text-purple-600 dark:text-purple-400 text-2xl">
+                🔋
+            </div>
+            <h3 class="text-xl font-bold dark:text-white">Native Efficiency</h3>
+            <p class="text-slate-600 dark:text-slate-400">Built as a native Live Wallpaper service. Minimal battery
+                consumption, maximum performance.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 py-12 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-slate-500 dark:text-slate-400 text-sm">© 2026 Lemon Slice Studios. All rights reserved.</p>
+        <div class="flex gap-8 text-sm font-medium text-slate-600 dark:text-slate-400">
+            <a href="https://www.lemonslice.de/studios/privacy-policy.html"
+               class="hover:text-slate-900 dark:hover:text-white">Privacy Policy</a>
+            <a href="mailto:hello@lemonslice.de" class="hover:text-slate-900 dark:hover:text-white">Support</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    window.addEventListener('scroll', function () {
+        const nav = document.getElementById('main-nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('nav-shrunk');
+        } else {
+            nav.classList.remove('nav-shrunk');
+        }
+    });
+</script>
+</body>
+</html>
