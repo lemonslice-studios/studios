@@ -4,51 +4,86 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a static HTML/CSS website for **Lemon Slice Studios**, an Android app development studio. There is no build system, package manager, or framework—just pure HTML, CSS, and JavaScript.
+This is the **Lemon Slice Studios** website, an Android app development studio. Built with Astro and Bun, using Tailwind CSS for styling.
 
 ## Development
 
-### Local Server
+### Commands
 
 ```bash
-# Python 3
-python -m http.server 8000 --directory www/studios
+# Install dependencies
+bun install
 
-# Or Node.js
-npx http-server www/studios
+# Development server (http://localhost:4321)
+bun run dev
+
+# Production build
+bun run build
+
+# Preview production build
+bun run preview
 ```
-
-Then open http://localhost:8000
-
-### No Build Steps
-
-- No compilation, bundling, or transpilation required
-- Edit HTML files directly and refresh browser
-- Tailwind CSS runs via runtime script (js/tailwind-min.js)
 
 ## Architecture
 
 ### Directory Structure
 
 ```
-www/studios/           # Site root
-├── index.html         # Main landing page
-├── privacy-policy.html
-├── ambiance/          # Product page for Ambiance Wallpaper app
-├── img/               # SVG images
-├── js/                # Tailwind runtime
-└── webfonts/          # Plus Jakarta Sans font files
+site-studios/
+├── astro.config.mjs          # Astro configuration
+├── tailwind.config.mjs       # Tailwind configuration
+├── package.json
+├── public/
+│   ├── img/                  # SVG images (lemon.svg, android-head_3D.svg)
+│   ├── fonts/                # Plus Jakarta Sans font files
+│   │   └── PlusJakartaSans/
+│   └── ambiance/             # Product page images (screenshots, wp.png)
+├── src/
+│   ├── components/
+│   │   ├── Logo.astro        # SVG logo with size prop (sm/md/lg)
+│   │   ├── Header.astro      # Main nav (Work/Custom/Philosophy links)
+│   │   ├── HeaderSimple.astro # Product nav (logo + Google Play CTA)
+│   │   ├── Footer.astro      # Main footer (Privacy/Legal/Contact)
+│   │   └── FooterSimple.astro # Product footer (simpler)
+│   ├── layouts/
+│   │   ├── BaseLayout.astro  # Shared head, fonts, analytics
+│   │   ├── MainLayout.astro  # Header + Footer + scroll script
+│   │   ├── ProductLayout.astro # HeaderSimple + FooterSimple
+│   │   └── StandaloneLayout.astro # Privacy page (own CSS, no Tailwind)
+│   ├── styles/
+│   │   └── global.css        # CSS variables, Tailwind, custom utilities
+│   └── pages/
+│       ├── index.astro       # Main landing page
+│       ├── privacy-policy.astro
+│       └── ambiance/
+│           └── index.astro   # Ambiance Wallpaper product page
+└── CLAUDE.md
 ```
 
 ### Styling Approach
 
-- All CSS is embedded in `<style>` tags within HTML files
-- Uses CSS custom properties for theming (light/dark mode via `prefers-color-scheme`)
-- Tailwind utility classes applied directly to elements
+- Tailwind CSS with build-time compilation
+- CSS custom properties for theming (light/dark mode via `prefers-color-scheme`)
+- Global styles in `src/styles/global.css`
 - Key color variables: `--bg-primary`, `--text-primary`, `--border-color`
+- Custom utilities: `.lemon-gradient`, `.soft-shadow`, `.text-gradient`, `.split-bg`
 
 ### Key UI Patterns
 
-- Navigation bar shrinks on scroll (JavaScript in index.html)
-- Dark mode support through CSS custom properties
+- Navigation bar shrinks on scroll (JavaScript in layouts)
+- Dark mode support through CSS custom properties and Tailwind's `dark:` prefix
 - Responsive design using Tailwind breakpoint prefixes (`md:`)
+
+### Layouts
+
+- **MainLayout**: Full site layout with Header/Footer, used for main landing page
+- **ProductLayout**: Simplified header with CTA button, used for product pages
+- **StandaloneLayout**: No Tailwind, custom inline CSS, used for privacy policy
+
+### Components
+
+- **Logo.astro**: Accepts `size` prop (`sm`, `md`, `lg`) for different contexts
+- **Header.astro**: Fixed nav with scroll-shrink effect
+- **HeaderSimple.astro**: Accepts `playStoreUrl` prop for CTA button
+- **Footer.astro**: Links to privacy, legal, contact
+- **FooterSimple.astro**: Minimal footer for product pages

@@ -1,0 +1,34 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  favicon?: string;
+  analyticsId?: string;
+}
+
+const {
+  title,
+  description = 'Lemon Slice Studios - Quietly Useful Android Apps',
+  favicon = '/img/lemon.svg',
+  analyticsId = '8541e245-eff0-4999-a62a-1a5cdf2f11aa',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
+    {analyticsId && (
+      <script async src="https://stats.lemonslice.de/script.js" data-website-id={analyticsId}></script>
+    )}
+  </head>
+  <body class="selection:bg-yellow-200">
+    <slot />
+  </body>
+</html>

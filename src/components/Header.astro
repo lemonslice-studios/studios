@@ -1,0 +1,21 @@
+---
+import Logo from './Logo.astro';
+---
+
+<nav id="main-nav" class="main-nav fixed w-full z-50 px-6 py-8 dark:bg-slate-900" style="background-color: var(--bg-primary);">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <div class="logo-container w-20 h-20 flex items-center justify-center transition-all duration-300">
+        <Logo size="lg" />
+      </div>
+      <span class="font-bold text-lg tracking-tight">
+        Lemon Slice <span class="text-slate-500" style="color: var(--text-tertiary);">Studios</span>
+      </span>
+    </div>
+    <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-widest dark:text-slate-400" style="color: var(--text-secondary);">
+      <a href="#work" class="hover:text-yellow-600 transition">Work</a>
+      <a href="#custom" class="hover:text-yellow-600 transition">Custom</a>
+      <a href="#philosophy" class="hover:text-yellow-600 transition">Philosophy</a>
+    </div>
+  </div>
+</nav>

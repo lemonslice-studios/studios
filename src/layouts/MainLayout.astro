@@ -1,0 +1,31 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <slot />
+  <Footer />
+
+  <script>
+    window.addEventListener('scroll', function () {
+      const nav = document.getElementById('main-nav');
+      if (nav) {
+        if (window.scrollY > 50) {
+          nav.classList.add('nav-shrunk');
+        } else {
+          nav.classList.remove('nav-shrunk');
+        }
+      }
+    });
+  </script>
+</BaseLayout>

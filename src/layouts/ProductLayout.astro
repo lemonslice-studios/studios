@@ -1,0 +1,33 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import HeaderSimple from '../components/HeaderSimple.astro';
+import FooterSimple from '../components/FooterSimple.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  favicon?: string;
+  playStoreUrl?: string;
+}
+
+const { title, description, favicon, playStoreUrl } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} favicon={favicon}>
+  <HeaderSimple playStoreUrl={playStoreUrl} />
+  <slot />
+  <FooterSimple />
+
+  <script>
+    window.addEventListener('scroll', function () {
+      const nav = document.getElementById('main-nav');
+      if (nav) {
+        if (window.scrollY > 50) {
+          nav.classList.add('nav-shrunk');
+        } else {
+          nav.classList.remove('nav-shrunk');
+        }
+      }
+    });
+  </script>
+</BaseLayout>

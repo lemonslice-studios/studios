@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Plus Jakarta Sans Font Faces */
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans/PlusJakartaSans-Regular.woff2') format('woff2'),
+        url('/fonts/PlusJakartaSans/PlusJakartaSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans/PlusJakartaSans-Medium.woff2') format('woff2'),
+        url('/fonts/PlusJakartaSans/PlusJakartaSans-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans/PlusJakartaSans-SemiBold.woff2') format('woff2'),
+        url('/fonts/PlusJakartaSans/PlusJakartaSans-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans/PlusJakartaSans-Bold.woff2') format('woff2'),
+        url('/fonts/PlusJakartaSans/PlusJakartaSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans/PlusJakartaSans-ExtraBold.woff2') format('woff2'),
+        url('/fonts/PlusJakartaSans/PlusJakartaSans-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans/PlusJakartaSans-BoldItalic.woff2') format('woff2'),
+        url('/fonts/PlusJakartaSans/PlusJakartaSans-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* CSS Custom Properties - Light Mode (Default) */
+:root {
+    --bg-primary: #fafaf9;
+    --bg-secondary: #ffffff;
+    --bg-card: #fdfcf6;
+    --bg-card-alt: #f8fafc;
+    --text-primary: rgb(15 23 42);
+    --text-secondary: rgb(100 116 139);
+    --text-tertiary: rgb(148 163 184);
+    --border-color: #e2e8f0;
+    --border-hover: #fef08a;
+}
+
+/* CSS Custom Properties - Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-card: #1e293b;
+        --bg-card-alt: #334155;
+        --text-primary: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --text-tertiary: #64748b;
+        --border-color: #334155;
+        --border-hover: #fef08a;
+    }
+}
+
+/* Base Styles */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Custom Utility Classes */
+.lemon-gradient {
+    background: linear-gradient(135deg, #FFFFFF 0%, #fef9c3 100%);
+}
+
+.ambient-app-gradient {
+    background: linear-gradient(90deg, #000000 0%, #000000 50%, #ffffff 50%, #ffffff 100%);
+}
+
+.split-bg {
+    background: linear-gradient(90deg, #212121 50%, #f5f5f5 50%);
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, #3b82f6, #9333ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.soft-shadow {
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+    .soft-shadow {
+        box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* App Card Hover Effect */
+.app-card:hover .app-icon {
+    transform: scale(1.05) translateY(-5px);
+}
+
+/* Nav Shrink Effect - Main Layout */
+nav.main-nav {
+    transition: all 0.3s ease-in-out;
+}
+
+nav.main-nav.nav-shrunk {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+nav.main-nav.nav-shrunk .logo-container {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+nav.main-nav.nav-shrunk .logo-container svg {
+    width: 48px;
+    height: 48px;
+}
+
+/* Nav Shrink Effect - Product Layout */
+nav.product-nav {
+    transition: all 0.3s ease-in-out;
+}
+
+nav.product-nav.nav-shrunk {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+nav.product-nav.nav-shrunk .logo-container svg {
+    width: 32px;
+    height: 32px;
+}

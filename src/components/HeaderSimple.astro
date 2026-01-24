@@ -1,0 +1,29 @@
+---
+import Logo from './Logo.astro';
+
+interface Props {
+  playStoreUrl?: string;
+}
+
+const { playStoreUrl = 'https://play.google.com/store/apps/details?id=de.lemonslice.ambiance' } = Astro.props;
+---
+
+<nav id="main-nav" class="product-nav fixed top-0 left-0 w-full z-50 bg-slate-50/80 backdrop-blur-md dark:bg-slate-950/80 p-6 flex justify-between items-center transition-all duration-300">
+  <a href="/">
+    <div class="flex items-center gap-2">
+      <div class="logo-container transition-all duration-300">
+        <Logo size="md" />
+      </div>
+      <span class="font-bold text-lg tracking-tight">
+        Lemon Slice <span class="text-slate-500">Studios</span>
+      </span>
+    </div>
+  </a>
+  <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" class="inline-block">
+    <img
+      alt="Get it on Google Play"
+      src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+      style="height: 60px;"
+    />
+  </a>
+</nav>
