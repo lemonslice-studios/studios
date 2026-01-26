@@ -12,7 +12,13 @@ const { title, description } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-  <Header />
+  <Header transparent={true} logoSize="lg" compact={false}>
+    <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-widest dark:text-slate-400" style="color: var(--text-secondary);">
+      <a href="#work" class="hover:text-yellow-600 transition">Work</a>
+      <a href="#custom" class="hover:text-yellow-600 transition">Custom</a>
+      <a href="#philosophy" class="hover:text-yellow-600 transition">Philosophy</a>
+    </div>
+  </Header>
   <slot />
   <Footer />
 

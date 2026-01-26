@@ -1,21 +1,41 @@
 ---
 import Logo from './Logo.astro';
+
+interface Props {
+  transparent?: boolean;
+  logoSize?: 'sm' | 'md' | 'lg';
+  compact?: boolean;
+}
+
+const { transparent = true, logoSize = 'md', compact = false } = Astro.props;
+
+const baseNavClass = compact ? 'product-nav' : 'main-nav';
+
+const navClass = transparent
+  ? 'fixed top-0 left-0 w-full z-50 bg-slate-50/80 backdrop-blur-md dark:bg-slate-950/80 transition-all duration-300'
+  : 'fixed w-full z-50 dark:bg-slate-900';
+
+const containerClass = compact
+  ? 'flex justify-between items-center'
+  : 'max-w-6xl mx-auto flex justify-between items-center';
+
+const paddingClass = compact ? 'p-6' : 'px-6 py-8';
 ---
 
-<nav id="main-nav" class="main-nav fixed w-full z-50 px-6 py-8 dark:bg-slate-900" style="background-color: var(--bg-primary);">
-  <div class="max-w-6xl mx-auto flex justify-between items-center">
-    <div class="flex items-center gap-3">
-      <div class="logo-container w-20 h-20 flex items-center justify-center transition-all duration-300">
-        <Logo size="lg" />
+<nav id="main-nav" class:list={[baseNavClass, navClass, paddingClass]} style={!transparent ? 'background-color: var(--bg-primary);' : undefined}>
+  <div class={containerClass}>
+    <a href="/">
+      <div class="flex items-center gap-3">
+        <div class="logo-container transition-all duration-300" class:list={[!compact && 'w-20 h-20 flex items-center justify-center']}>
+          <Logo size={logoSize} />
+        </div>
+        <span class="font-bold text-lg tracking-tight">
+          Lemon Slice <span class="text-slate-500" class:list={[!transparent && 'dark:text-slate-400']} style={!transparent ? 'color: var(--text-tertiary);' : undefined}>Studios</span>
+        </span>
       </div>
-      <span class="font-bold text-lg tracking-tight">
-        Lemon Slice <span class="text-slate-500" style="color: var(--text-tertiary);">Studios</span>
-      </span>
-    </div>
-    <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-widest dark:text-slate-400" style="color: var(--text-secondary);">
-      <a href="#work" class="hover:text-yellow-600 transition">Work</a>
-      <a href="#custom" class="hover:text-yellow-600 transition">Custom</a>
-      <a href="#philosophy" class="hover:text-yellow-600 transition">Philosophy</a>
+    </a>
+    <div>
+      <slot />
     </div>
   </div>
 </nav>

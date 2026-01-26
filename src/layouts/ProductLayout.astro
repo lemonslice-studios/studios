@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import HeaderSimple from '../components/HeaderSimple.astro';
+import Header from '../components/Header.astro';
 import FooterSimple from '../components/FooterSimple.astro';
 
 interface Props {
@@ -10,11 +10,19 @@ interface Props {
   playStoreUrl?: string;
 }
 
-const { title, description, favicon, playStoreUrl } = Astro.props;
+const { title, description, favicon, playStoreUrl = 'https://play.google.com/store/apps/details?id=de.lemonslice.ambiance' } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} favicon={favicon}>
-  <HeaderSimple playStoreUrl={playStoreUrl} />
+  <Header transparent={true} logoSize="md" compact={true}>
+    <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" class="inline-block">
+      <img
+        alt="Get it on Google Play"
+        src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+        style="height: 60px;"
+      />
+    </a>
+  </Header>
   <slot />
   <FooterSimple />
 
