@@ -7,11 +7,36 @@ const tranquilFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/s
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap');
 
+  /* ── Tranquil colour tokens ── */
+  :root {
+    --tq-bg-start:  #F5F2ED;
+    --tq-bg-mid:    #ECEEE8;
+    --tq-bg-end:    #E0E4D9;
+    --tq-ink:       #2C2C2A;
+    --tq-fade:      #ECEEE8;   /* matches svg fade gradient stop */
+    --tq-rule:      rgba(44, 44, 42, 0.18);
+    --tq-divider:   rgba(44, 44, 42, 0.12);
+    --tq-glow:      rgba(44, 44, 42, 0.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --tq-bg-start:  #1B1A17;
+      --tq-bg-mid:    #191C15;
+      --tq-bg-end:    #161912;
+      --tq-ink:       #EDE8DC;
+      --tq-fade:      #191C15;
+      --tq-rule:      rgba(237, 232, 220, 0.12);
+      --tq-divider:   rgba(237, 232, 220, 0.10);
+      --tq-glow:      rgba(0, 0, 0, 0.35);
+    }
+  }
+
   .tq-page {
     font-family: 'Literata', Georgia, 'Times New Roman', serif;
-    background: linear-gradient(170deg, #F5F2ED 0%, #ECEEE8 45%, #E0E4D9 100%);
+    background: linear-gradient(170deg, var(--tq-bg-start) 0%, var(--tq-bg-mid) 45%, var(--tq-bg-end) 100%);
     min-height: 100vh;
-    color: #2C2C2A;
+    color: var(--tq-ink);
   }
 
   .tq-serif {
@@ -22,20 +47,25 @@ const tranquilFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/s
     font-family: 'Literata', Georgia, 'Times New Roman', serif;
   }
 
-  /* Ensure header blends into the cream background */
-  .tq-page ~ nav,
-  .tq-page + * {
-    background: transparent;
-  }
-
   .tq-rule {
     border: none;
-    border-top: 1px solid rgba(44, 44, 42, 0.18);
+    border-top: 1px solid var(--tq-rule);
+  }
+
+  .tq-dividers {
+    border-color: var(--tq-divider) !important;
+  }
+  .tq-dividers > * {
+    border-color: var(--tq-divider);
   }
 
   .tq-phone-glow {
-    filter: drop-shadow(0 24px 48px rgba(44, 44, 42, 0.08));
+    filter: drop-shadow(0 24px 48px var(--tq-glow));
   }
+
+  /* SVG wireframe: override presentation attributes with CSS variables */
+  .tq-phone-glow svg *[fill="#2C2C2A"]   { fill:   var(--tq-ink); }
+  .tq-phone-glow svg *[stroke="#2C2C2A"] { stroke: var(--tq-ink); }
 </style>
 
 <ProductLayout
@@ -55,12 +85,12 @@ const tranquilFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/s
     </p>
 
     <h1 class="tq-serif text-[clamp(72px,15vw,144px)] leading-none font-light italic tracking-tight mb-6"
-        style="color: #2C2C2A; letter-spacing: -0.03em;">
+        style="color: var(--tq-ink); letter-spacing: -0.03em;">
       Tranquil.
     </h1>
 
     <p class="tq-serif text-[clamp(22px,4vw,36px)] font-light opacity-75 mb-16 max-w-xl leading-snug"
-       style="color: #2C2C2A;">
+       style="color: var(--tq-ink);">
       The web, distilled to its essence.
     </p>
 
@@ -180,8 +210,8 @@ const tranquilFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/s
         <!-- Fade overlay suggesting scroll -->
         <defs>
           <linearGradient id="fadeOut" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#EEECe8" stop-opacity="0"/>
-            <stop offset="100%" stop-color="#EEECe8" stop-opacity="0.85"/>
+            <stop offset="0%" style="stop-color: var(--tq-fade)" stop-opacity="0"/>
+            <stop offset="100%" style="stop-color: var(--tq-fade)" stop-opacity="0.85"/>
           </linearGradient>
         </defs>
         <rect x="16" y="400" width="268" height="82" rx="0" fill="url(#fadeOut)"/>
@@ -230,7 +260,7 @@ const tranquilFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/s
 
       <div>
         <h2 class="tq-serif text-5xl md:text-6xl font-light italic leading-tight mb-0"
-            style="color: #2C2C2A; letter-spacing: -0.02em;">
+            style="color: var(--tq-ink); letter-spacing: -0.02em;">
           Reading is not<br/>the problem.
         </h2>
       </div>
@@ -328,8 +358,7 @@ const tranquilFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/s
         </h2>
       </div>
 
-      <div class="tq-body divide-y"
-           style="border-color: rgba(44,44,42,0.12);">
+      <div class="tq-body divide-y tq-dividers">
 
         <div class="py-7">
           <p class="tq-serif text-lg font-medium mb-1">Local Intelligence</p>
@@ -385,7 +414,7 @@ const tranquilFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/s
   <!-- ─── PULL QUOTE ────────────────────────────────────────── -->
   <section class="max-w-3xl mx-auto px-8 py-40 text-center">
     <blockquote class="tq-serif text-3xl md:text-4xl font-light italic leading-snug"
-                style="color: #2C2C2A; letter-spacing: -0.02em; opacity: 0.8;">
+                style="color: var(--tq-ink); letter-spacing: -0.02em; opacity: 0.8;">
       "Not a reader application.<br/>
       A distillation instrument."
     </blockquote>
