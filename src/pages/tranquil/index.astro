@@ -1,50 +1,56 @@
 ---
-import ProductLayout from '../../layouts/ProductLayout.astro';
+import ProductLayout from "../../layouts/ProductLayout.astro";
 
-const tranquilFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23E0E4D9'/><text x='16' y='22' text-anchor='middle' font-size='18' font-family='Georgia,serif' fill='%232C2C2A'>T</text></svg>";
+const tranquilFavicon =
+  "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23E0E4D9'/><text x='16' y='22' text-anchor='middle' font-size='18' font-family='Georgia,serif' fill='%232C2C2A'>T</text></svg>";
 ---
 
 <style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap");
 
   /* ── Tranquil colour tokens ── */
   :root {
-    --tq-bg-start:  #F5F2ED;
-    --tq-bg-mid:    #ECEEE8;
-    --tq-bg-end:    #E0E4D9;
-    --tq-ink:       #2C2C2A;
-    --tq-fade:      #ECEEE8;   /* matches svg fade gradient stop */
-    --tq-rule:      rgba(44, 44, 42, 0.18);
-    --tq-divider:   rgba(44, 44, 42, 0.12);
-    --tq-glow:      rgba(44, 44, 42, 0.08);
+    --tq-bg-start: #f5f2ed;
+    --tq-bg-mid: #eceee8;
+    --tq-bg-end: #e0e4d9;
+    --tq-ink: #2c2c2a;
+    --tq-fade: #eceee8; /* matches svg fade gradient stop */
+    --tq-rule: rgba(44, 44, 42, 0.18);
+    --tq-divider: rgba(44, 44, 42, 0.12);
+    --tq-glow: rgba(44, 44, 42, 0.08);
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --tq-bg-start:  #1B1A17;
-      --tq-bg-mid:    #191C15;
-      --tq-bg-end:    #161912;
-      --tq-ink:       #EDE8DC;
-      --tq-fade:      #191C15;
-      --tq-rule:      rgba(237, 232, 220, 0.12);
-      --tq-divider:   rgba(237, 232, 220, 0.10);
-      --tq-glow:      rgba(0, 0, 0, 0.35);
+      --tq-bg-start: #1b1a17;
+      --tq-bg-mid: #191c15;
+      --tq-bg-end: #161912;
+      --tq-ink: #ede8dc;
+      --tq-fade: #191c15;
+      --tq-rule: rgba(237, 232, 220, 0.12);
+      --tq-divider: rgba(237, 232, 220, 0.1);
+      --tq-glow: rgba(0, 0, 0, 0.35);
     }
   }
 
   .tq-page {
-    font-family: 'Literata', Georgia, 'Times New Roman', serif;
-    background: linear-gradient(170deg, var(--tq-bg-start) 0%, var(--tq-bg-mid) 45%, var(--tq-bg-end) 100%);
+    font-family: "Literata", Georgia, "Times New Roman", serif;
+    background: linear-gradient(
+      170deg,
+      var(--tq-bg-start) 0%,
+      var(--tq-bg-mid) 45%,
+      var(--tq-bg-end) 100%
+    );
     min-height: 100vh;
     color: var(--tq-ink);
   }
 
   .tq-serif {
-    font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+    font-family: "Newsreader", Georgia, "Times New Roman", serif;
   }
 
   .tq-body {
-    font-family: 'Literata', Georgia, 'Times New Roman', serif;
+    font-family: "Literata", Georgia, "Times New Roman", serif;
   }
 
   .tq-rule {
@@ -64,8 +70,12 @@ const tranquilFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/s
   }
 
   /* SVG wireframe: override presentation attributes with CSS variables */
-  .tq-phone-glow svg *[fill="#2C2C2A"]   { fill:   var(--tq-ink); }
-  .tq-phone-glow svg *[stroke="#2C2C2A"] { stroke: var(--tq-ink); }
+  .tq-phone-glow svg *[fill="#2C2C2A"] {
+    fill: var(--tq-ink);
+  }
+  .tq-phone-glow svg *[stroke="#2C2C2A"] {
+    stroke: var(--tq-ink);
+  }
 </style>
 
 <ProductLayout
@@ -74,395 +84,724 @@ const tranquilFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/s
   favicon={tranquilFavicon}
   playStoreUrl="https://play.google.com/store/apps"
 >
-
-<div class="tq-page">
-
-  <!-- ─── HERO ─────────────────────────────────────────────── -->
-  <section class="max-w-5xl mx-auto px-8 pt-40 pb-20 flex flex-col items-center text-center">
-
-    <p class="tq-body text-sm tracking-[0.25em] uppercase opacity-50 mb-10">
-      Lemon Slice Studios &nbsp;·&nbsp; Android
-    </p>
-
-    <h1 class="tq-serif text-[clamp(72px,15vw,144px)] leading-none font-light italic tracking-tight mb-6"
-        style="color: var(--tq-ink); letter-spacing: -0.03em;">
-      Tranquil.
-    </h1>
-
-    <p class="tq-serif text-[clamp(22px,4vw,36px)] font-light opacity-75 mb-16 max-w-xl leading-snug"
-       style="color: var(--tq-ink);">
-      The web, distilled to its essence.
-    </p>
-
-    <!-- Wireframe Phone Illustration -->
-    <div class="tq-phone-glow mb-24" aria-label="Pixel 9a showing the Story tab in Tranquil">
-      <svg viewBox="0 0 300 610" xmlns="http://www.w3.org/2000/svg"
-           class="w-56 md:w-72" fill="none">
-
-        <!-- Phone body -->
-        <rect x="8" y="8" width="284" height="594" rx="46" ry="46"
-              stroke="#2C2C2A" stroke-width="2.5" opacity="0.75"/>
-
-        <!-- Screen inner bezel -->
-        <rect x="16" y="16" width="268" height="578" rx="38" ry="38"
-              stroke="#2C2C2A" stroke-width="1" opacity="0.2"/>
-
-        <!-- Volume buttons – left -->
-        <rect x="0" y="148" width="8" height="44" rx="3"
-              stroke="#2C2C2A" stroke-width="1.5" opacity="0.5"/>
-        <rect x="0" y="204" width="8" height="44" rx="3"
-              stroke="#2C2C2A" stroke-width="1.5" opacity="0.5"/>
-
-        <!-- Power button – right -->
-        <rect x="292" y="175" width="8" height="58" rx="3"
-              stroke="#2C2C2A" stroke-width="1.5" opacity="0.5"/>
-
-        <!-- Camera punch-hole -->
-        <circle cx="150" cy="44" r="5.5"
-                stroke="#2C2C2A" stroke-width="1.5" opacity="0.5"/>
-
-        <!-- Status bar -->
-        <text x="36" y="58"
-              font-family="'Newsreader', Georgia, serif"
-              font-size="11" fill="#2C2C2A" opacity="0.4">9:41</text>
-        <!-- Battery -->
-        <rect x="243" y="49" width="18" height="9" rx="2"
-              stroke="#2C2C2A" stroke-width="1" opacity="0.35"/>
-        <rect x="261" y="51" width="3" height="5" rx="1"
-              fill="#2C2C2A" opacity="0.3"/>
-        <rect x="244.5" y="50.5" width="14" height="6" rx="1.5"
-              fill="#2C2C2A" opacity="0.25"/>
-        <!-- Signal dots -->
-        <rect x="220" y="51" width="4" height="7" rx="1"
-              fill="#2C2C2A" opacity="0.35"/>
-        <rect x="227" y="53" width="4" height="5" rx="1"
-              fill="#2C2C2A" opacity="0.25"/>
-        <rect x="234" y="55" width="4" height="3" rx="1"
-              fill="#2C2C2A" opacity="0.15"/>
-
-        <!-- ── Article Content ── -->
-
-        <!-- Article source label -->
-        <text x="36" y="90"
-              font-family="'Literata', Georgia, serif"
-              font-size="9" fill="#2C2C2A" opacity="0.4"
-              font-style="italic">The Atlantic</text>
-
-        <!-- Headline -->
-        <text x="36" y="112"
-              font-family="'Newsreader', Georgia, serif"
-              font-size="17" font-weight="600" fill="#2C2C2A"
-              letter-spacing="-0.3">The Quiet Revolution</text>
-        <text x="36" y="131"
-              font-family="'Newsreader', Georgia, serif"
-              font-size="17" font-weight="600" fill="#2C2C2A"
-              letter-spacing="-0.3">in Software Design</text>
-
-        <!-- Byline -->
-        <text x="36" y="150"
-              font-family="'Literata', Georgia, serif"
-              font-size="9" fill="#2C2C2A" opacity="0.45"
-              font-style="italic">By M. Chen &nbsp;·&nbsp; 8 min read</text>
-
-        <!-- Rule -->
-        <line x1="36" y1="162" x2="264" y2="162"
-              stroke="#2C2C2A" stroke-width="0.6" opacity="0.2"/>
-
-        <!-- Body text lines (paragraph 1) -->
-        <rect x="36" y="173" width="228" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-        <rect x="36" y="183" width="218" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-        <rect x="36" y="193" width="232" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-        <rect x="36" y="203" width="195" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-
-        <!-- Paragraph break -->
-        <rect x="36" y="219" width="228" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-        <rect x="36" y="229" width="210" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-        <rect x="36" y="239" width="225" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-        <rect x="36" y="249" width="180" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-
-        <!-- Pull quote rule -->
-        <line x1="36" y1="266" x2="80" y2="266"
-              stroke="#2C2C2A" stroke-width="1" opacity="0.3"/>
-        <text x="36" y="281"
-              font-family="'Newsreader', Georgia, serif"
-              font-size="11" font-style="italic" fill="#2C2C2A" opacity="0.55"
-              >"The signal, not the noise."</text>
-        <line x1="36" y1="290" x2="80" y2="290"
-              stroke="#2C2C2A" stroke-width="1" opacity="0.3"/>
-
-        <!-- Paragraph 3 -->
-        <rect x="36" y="303" width="228" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-        <rect x="36" y="313" width="215" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-        <rect x="36" y="323" width="230" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-        <rect x="36" y="333" width="165" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-
-        <!-- Paragraph 4 -->
-        <rect x="36" y="349" width="220" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-        <rect x="36" y="359" width="205" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-        <rect x="36" y="369" width="228" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-        <rect x="36" y="379" width="190" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.1"/>
-
-        <!-- Paragraph 5 (fade out, indicating scrollable) -->
-        <rect x="36" y="395" width="218" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.07"/>
-        <rect x="36" y="405" width="200" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.04"/>
-        <rect x="36" y="415" width="220" height="5.5" rx="2.5" fill="#2C2C2A" opacity="0.02"/>
-
-        <!-- Fade overlay suggesting scroll -->
-        <defs>
-          <linearGradient id="fadeOut" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" style="stop-color: var(--tq-fade)" stop-opacity="0"/>
-            <stop offset="100%" style="stop-color: var(--tq-fade)" stop-opacity="0.85"/>
-          </linearGradient>
-        </defs>
-        <rect x="16" y="400" width="268" height="82" rx="0" fill="url(#fadeOut)"/>
-
-        <!-- ── Bottom Tab Bar ── -->
-        <line x1="16" y1="500" x2="284" y2="500"
-              stroke="#2C2C2A" stroke-width="0.75" opacity="0.2"/>
-
-        <!-- Story tab — active -->
-        <text x="100" y="524"
-              font-family="'Newsreader', Georgia, serif"
-              font-size="12" text-anchor="middle"
-              fill="#2C2C2A" font-weight="600">Story</text>
-        <line x1="72" y1="536" x2="128" y2="536"
-              stroke="#2C2C2A" stroke-width="1.5" opacity="0.7"/>
-
-        <!-- Insights tab — inactive -->
-        <text x="200" y="524"
-              font-family="'Newsreader', Georgia, serif"
-              font-size="12" text-anchor="middle"
-              fill="#2C2C2A" opacity="0.3">Insights</text>
-
-        <!-- Home indicator -->
-        <rect x="112" y="556" width="76" height="3.5" rx="2"
-              fill="#2C2C2A" opacity="0.18"/>
-
-      </svg>
-    </div>
-
-    <p class="tq-body text-lg md:text-xl leading-relaxed opacity-70 max-w-lg">
-      Share a URL from any app. Tranquil finds the article,
-      strips everything else, and hands it back — clean.
-    </p>
-
-  </section>
-
-  <!-- ─── RULE ──────────────────────────────────────────────── -->
-  <div class="max-w-5xl mx-auto px-8">
-    <hr class="tq-rule"/>
-  </div>
-
-  <!-- ─── PHILOSOPHY ───────────────────────────────────────── -->
-  <section class="max-w-5xl mx-auto px-8 py-32">
-
-    <div class="grid md:grid-cols-2 gap-16 items-start">
-
-      <div>
-        <h2 class="tq-serif text-5xl md:text-6xl font-light italic leading-tight mb-0"
-            style="color: var(--tq-ink); letter-spacing: -0.02em;">
-          Reading is not<br/>the problem.
-        </h2>
-      </div>
-
-      <div class="tq-body space-y-5 text-base md:text-lg leading-relaxed opacity-75 pt-2">
-        <p>
-          The web buries every article under layers of
-          advertisement, notification prompts, autoplay video,
-          and artificially inflated word counts. The signal is
-          there. It's simply hidden.
-        </p>
-        <p>
-          Tranquil is a <em>distiller</em>. Share any URL —
-          from a search result, a news app, a social link —
-          and Tranquil follows every redirect, defeats every
-          blocker, and surfaces the text the author intended.
-        </p>
-        <p>
-          Then it stops. No history. No account. No cloud.
-          Nothing persists. You read, and then it's gone.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ─── RULE ──────────────────────────────────────────────── -->
-  <div class="max-w-5xl mx-auto px-8">
-    <hr class="tq-rule"/>
-  </div>
-
-  <!-- ─── HOW IT WORKS (Three Acts) ───────────────────────── -->
-  <section class="max-w-5xl mx-auto px-8 py-32">
-
-    <p class="tq-serif text-xs tracking-[0.3em] uppercase opacity-40 mb-20 text-center">
-      How it works
-    </p>
-
-    <div class="grid md:grid-cols-3 gap-16">
-
-      <div>
-        <p class="tq-serif text-6xl font-extralight opacity-20 mb-6 leading-none">I.</p>
-        <h3 class="tq-serif text-2xl font-medium italic mb-4" style="letter-spacing: -0.01em;">
-          Share
-        </h3>
-        <p class="tq-body text-base leading-relaxed opacity-65">
-          Tap the share button in any app — browser, search,
-          news reader, social media. Select Tranquil.
-        </p>
-      </div>
-
-      <div>
-        <p class="tq-serif text-6xl font-extralight opacity-20 mb-6 leading-none">II.</p>
-        <h3 class="tq-serif text-2xl font-medium italic mb-4" style="letter-spacing: -0.01em;">
-          Extract
-        </h3>
-        <p class="tq-body text-base leading-relaxed opacity-65">
-          Deep extraction follows every redirect and wrapper.
-          Readability parsing isolates the article. On-device
-          Gemini Nano distills the insight.
-        </p>
-      </div>
-
-      <div>
-        <p class="tq-serif text-6xl font-extralight opacity-20 mb-6 leading-none">III.</p>
-        <h3 class="tq-serif text-2xl font-medium italic mb-4" style="letter-spacing: -0.01em;">
-          Read
-        </h3>
-        <p class="tq-body text-base leading-relaxed opacity-65">
-          Two tabs. <em>Story</em> — the clean, typeset article.
-          <em>Insights</em> — the AI distillation: one sentence
-          and a quiet bulleted summary.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ─── RULE ──────────────────────────────────────────────── -->
-  <div class="max-w-5xl mx-auto px-8">
-    <hr class="tq-rule"/>
-  </div>
-
-  <!-- ─── FEATURES (Typographic list) ─────────────────────── -->
-  <section class="max-w-5xl mx-auto px-8 py-32">
-
-    <div class="grid md:grid-cols-2 gap-x-24 gap-y-0">
-
-      <div class="mb-0">
-        <h2 class="tq-serif text-4xl md:text-5xl font-light leading-tight italic mb-16"
-            style="letter-spacing: -0.02em;">
-          Everything<br/>by design.
-        </h2>
-      </div>
-
-      <div class="tq-body divide-y tq-dividers">
-
-        <div class="py-7">
-          <p class="tq-serif text-lg font-medium mb-1">Local Intelligence</p>
-          <p class="text-sm leading-relaxed opacity-60">
-            Gemini Nano runs entirely on-device via Android AICore.
-            No article text leaves your phone.
-          </p>
-        </div>
-
-        <div class="py-7">
-          <p class="tq-serif text-lg font-medium mb-1">Deep Extraction</p>
-          <p class="text-sm leading-relaxed opacity-60">
-            Follows meta-refresh redirects, unwraps Google Search
-            and AMP URLs, and surfaces the canonical article.
-          </p>
-        </div>
-
-        <div class="py-7">
-          <p class="tq-serif text-lg font-medium mb-1">Multi-Format Input</p>
-          <p class="text-sm leading-relaxed opacity-60">
-            Accepts URLs, raw HTML, Markdown, or plain text —
-            whatever your app shares.
-          </p>
-        </div>
-
-        <div class="py-7">
-          <p class="tq-serif text-lg font-medium mb-1">Strictly Ephemeral</p>
-          <p class="text-sm leading-relaxed opacity-60">
-            No reading history, no account, no cloud sync.
-            Tranquil stores nothing.
-          </p>
-        </div>
-
-        <div class="py-7">
-          <p class="tq-serif text-lg font-medium mb-1">Calm Typography</p>
-          <p class="text-sm leading-relaxed opacity-60">
-            Literata and Newsreader. Generous leading. No images,
-            no alerts, no engagement mechanics.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ─── RULE ──────────────────────────────────────────────── -->
-  <div class="max-w-5xl mx-auto px-8">
-    <hr class="tq-rule"/>
-  </div>
-
-  <!-- ─── PULL QUOTE ────────────────────────────────────────── -->
-  <section class="max-w-3xl mx-auto px-8 py-40 text-center">
-    <blockquote class="tq-serif text-3xl md:text-4xl font-light italic leading-snug"
-                style="color: var(--tq-ink); letter-spacing: -0.02em; opacity: 0.8;">
-      "Not a reader application.<br/>
-      A distillation instrument."
-    </blockquote>
-    <p class="tq-body text-sm opacity-35 mt-8 tracking-widest uppercase">
-      — Design principle
-    </p>
-  </section>
-
-  <!-- ─── RULE ──────────────────────────────────────────────── -->
-  <div class="max-w-5xl mx-auto px-8">
-    <hr class="tq-rule"/>
-  </div>
-
-  <!-- ─── CTA ───────────────────────────────────────────────── -->
-  <section class="max-w-5xl mx-auto px-8 py-32 flex flex-col items-center text-center">
-
-    <h2 class="tq-serif text-4xl md:text-5xl font-light italic mb-6"
-        style="letter-spacing: -0.02em;">
-      Read without noise.
-    </h2>
-
-    <p class="tq-body text-base opacity-60 mb-14 max-w-sm leading-relaxed">
-      Requires Android 15 and a Pixel 9a or later
-      for on-device AI distillation.
-    </p>
-
-    <a
-      href="https://play.google.com/store/apps"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-block"
+  <div class="tq-page">
+    <!-- ─── HERO ─────────────────────────────────────────────── -->
+    <section
+      class="max-w-5xl mx-auto px-8 pt-40 pb-20 flex flex-col items-center text-center"
     >
-      <img
-        alt="Get it on Google Play"
-        src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-        style="height: 64px; opacity: 0.85;"
-      />
-    </a>
+      <p class="tq-body text-sm tracking-[0.25em] uppercase opacity-50 mb-10">
+        Lemon Slice Studios &nbsp;·&nbsp; Android
+      </p>
 
-    <p class="tq-body text-xs opacity-30 mt-12 tracking-widest uppercase">
-      Free &nbsp;·&nbsp; No ads &nbsp;·&nbsp; No account
-    </p>
+      <h1
+        class="tq-serif text-[clamp(72px,15vw,144px)] leading-none font-light italic tracking-tight mb-6"
+        style="color: var(--tq-ink); letter-spacing: -0.03em;"
+      >
+        Tranquil.
+      </h1>
 
-  </section>
+      <p
+        class="tq-serif text-[clamp(22px,4vw,36px)] font-light opacity-75 mb-16 max-w-xl leading-snug"
+        style="color: var(--tq-ink);"
+      >
+        The web, distilled to its essence.
+      </p>
 
-  <!-- Bottom breathing room -->
-  <div class="h-16"></div>
+      <!-- Wireframe Phone Illustration -->
+      <div
+        class="tq-phone-glow mb-24"
+        aria-label="Pixel 9a showing the Story tab in Tranquil"
+      >
+        <svg
+          viewBox="0 0 300 610"
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-56 md:w-72"
+          fill="none"
+        >
+          <!-- Phone body -->
+          <rect
+            x="8"
+            y="8"
+            width="284"
+            height="594"
+            rx="46"
+            ry="46"
+            stroke="#2C2C2A"
+            stroke-width="2.5"
+            opacity="0.75"></rect>
 
-</div>
+          <!-- Screen inner bezel -->
+          <rect
+            x="16"
+            y="16"
+            width="268"
+            height="578"
+            rx="38"
+            ry="38"
+            stroke="#2C2C2A"
+            stroke-width="1"
+            opacity="0.2"></rect>
 
+          <!-- Volume buttons – left -->
+          <rect
+            x="0"
+            y="148"
+            width="8"
+            height="44"
+            rx="3"
+            stroke="#2C2C2A"
+            stroke-width="1.5"
+            opacity="0.5"></rect>
+          <rect
+            x="0"
+            y="204"
+            width="8"
+            height="44"
+            rx="3"
+            stroke="#2C2C2A"
+            stroke-width="1.5"
+            opacity="0.5"></rect>
+
+          <!-- Power button – right -->
+          <rect
+            x="292"
+            y="175"
+            width="8"
+            height="58"
+            rx="3"
+            stroke="#2C2C2A"
+            stroke-width="1.5"
+            opacity="0.5"></rect>
+
+          <!-- Camera punch-hole -->
+          <circle
+            cx="150"
+            cy="44"
+            r="5.5"
+            stroke="#2C2C2A"
+            stroke-width="1.5"
+            opacity="0.5"></circle>
+
+          <!-- Status bar -->
+          <text
+            x="36"
+            y="58"
+            font-family="'Newsreader', Georgia, serif"
+            font-size="11"
+            fill="#2C2C2A"
+            opacity="0.4">9:41</text
+          >
+          <!-- Battery -->
+          <rect
+            x="243"
+            y="49"
+            width="18"
+            height="9"
+            rx="2"
+            stroke="#2C2C2A"
+            stroke-width="1"
+            opacity="0.35"></rect>
+          <rect
+            x="261"
+            y="51"
+            width="3"
+            height="5"
+            rx="1"
+            fill="#2C2C2A"
+            opacity="0.3"></rect>
+          <rect
+            x="244.5"
+            y="50.5"
+            width="14"
+            height="6"
+            rx="1.5"
+            fill="#2C2C2A"
+            opacity="0.25"></rect>
+          <!-- Signal dots -->
+          <rect
+            x="220"
+            y="51"
+            width="4"
+            height="7"
+            rx="1"
+            fill="#2C2C2A"
+            opacity="0.35"></rect>
+          <rect
+            x="227"
+            y="53"
+            width="4"
+            height="5"
+            rx="1"
+            fill="#2C2C2A"
+            opacity="0.25"></rect>
+          <rect
+            x="234"
+            y="55"
+            width="4"
+            height="3"
+            rx="1"
+            fill="#2C2C2A"
+            opacity="0.15"></rect>
+
+          <!-- ── Article Content ── -->
+
+          <!-- Article source label -->
+          <text
+            x="36"
+            y="90"
+            font-family="'Literata', Georgia, serif"
+            font-size="9"
+            fill="#2C2C2A"
+            opacity="0.4"
+            font-style="italic">The Atlantic</text
+          >
+
+          <!-- Headline -->
+          <text
+            x="36"
+            y="112"
+            font-family="'Newsreader', Georgia, serif"
+            font-size="17"
+            font-weight="600"
+            fill="#2C2C2A"
+            letter-spacing="-0.3">The Quiet Revolution</text
+          >
+          <text
+            x="36"
+            y="131"
+            font-family="'Newsreader', Georgia, serif"
+            font-size="17"
+            font-weight="600"
+            fill="#2C2C2A"
+            letter-spacing="-0.3">in Software Design</text
+          >
+
+          <!-- Byline -->
+          <text
+            x="36"
+            y="150"
+            font-family="'Literata', Georgia, serif"
+            font-size="9"
+            fill="#2C2C2A"
+            opacity="0.45"
+            font-style="italic">By M. Chen &nbsp;·&nbsp; 8 min read</text
+          >
+
+          <!-- Rule -->
+          <line
+            x1="36"
+            y1="162"
+            x2="264"
+            y2="162"
+            stroke="#2C2C2A"
+            stroke-width="0.6"
+            opacity="0.2"></line>
+
+          <!-- Body text lines (paragraph 1) -->
+          <rect
+            x="36"
+            y="173"
+            width="228"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+          <rect
+            x="36"
+            y="183"
+            width="218"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+          <rect
+            x="36"
+            y="193"
+            width="232"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+          <rect
+            x="36"
+            y="203"
+            width="195"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+
+          <!-- Paragraph break -->
+          <rect
+            x="36"
+            y="219"
+            width="228"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+          <rect
+            x="36"
+            y="229"
+            width="210"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+          <rect
+            x="36"
+            y="239"
+            width="225"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+          <rect
+            x="36"
+            y="249"
+            width="180"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+
+          <!-- Pull quote rule -->
+          <line
+            x1="36"
+            y1="266"
+            x2="80"
+            y2="266"
+            stroke="#2C2C2A"
+            stroke-width="1"
+            opacity="0.3"></line>
+          <text
+            x="36"
+            y="281"
+            font-family="'Newsreader', Georgia, serif"
+            font-size="11"
+            font-style="italic"
+            fill="#2C2C2A"
+            opacity="0.55">"The signal, not the noise."</text
+          >
+          <line
+            x1="36"
+            y1="290"
+            x2="80"
+            y2="290"
+            stroke="#2C2C2A"
+            stroke-width="1"
+            opacity="0.3"></line>
+
+          <!-- Paragraph 3 -->
+          <rect
+            x="36"
+            y="303"
+            width="228"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+          <rect
+            x="36"
+            y="313"
+            width="215"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+          <rect
+            x="36"
+            y="323"
+            width="230"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+          <rect
+            x="36"
+            y="333"
+            width="165"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+
+          <!-- Paragraph 4 -->
+          <rect
+            x="36"
+            y="349"
+            width="220"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+          <rect
+            x="36"
+            y="359"
+            width="205"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+          <rect
+            x="36"
+            y="369"
+            width="228"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+          <rect
+            x="36"
+            y="379"
+            width="190"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.1"></rect>
+
+          <!-- Paragraph 5 (fade out, indicating scrollable) -->
+          <rect
+            x="36"
+            y="395"
+            width="218"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.07"></rect>
+          <rect
+            x="36"
+            y="405"
+            width="200"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.04"></rect>
+          <rect
+            x="36"
+            y="415"
+            width="220"
+            height="5.5"
+            rx="2.5"
+            fill="#2C2C2A"
+            opacity="0.02"></rect>
+
+          <!-- Fade overlay suggesting scroll -->
+          <defs>
+            <linearGradient id="fadeOut" x1="0" y1="0" x2="0" y2="1">
+              <stop
+                offset="0%"
+                style="stop-color: var(--tq-fade)"
+                stop-opacity="0"></stop>
+              <stop
+                offset="100%"
+                style="stop-color: var(--tq-fade)"
+                stop-opacity="0.85"></stop>
+            </linearGradient>
+          </defs>
+          <rect
+            x="16"
+            y="400"
+            width="268"
+            height="82"
+            rx="0"
+            fill="url(#fadeOut)"></rect>
+
+          <!-- ── Bottom Tab Bar ── -->
+          <line
+            x1="16"
+            y1="500"
+            x2="284"
+            y2="500"
+            stroke="#2C2C2A"
+            stroke-width="0.75"
+            opacity="0.2"></line>
+
+          <!-- Story tab — active -->
+          <text
+            x="100"
+            y="524"
+            font-family="'Newsreader', Georgia, serif"
+            font-size="12"
+            text-anchor="middle"
+            fill="#2C2C2A"
+            font-weight="600">Story</text
+          >
+          <line
+            x1="72"
+            y1="536"
+            x2="128"
+            y2="536"
+            stroke="#2C2C2A"
+            stroke-width="1.5"
+            opacity="0.7"></line>
+
+          <!-- Insights tab — inactive -->
+          <text
+            x="200"
+            y="524"
+            font-family="'Newsreader', Georgia, serif"
+            font-size="12"
+            text-anchor="middle"
+            fill="#2C2C2A"
+            opacity="0.3">Insights</text
+          >
+
+          <!-- Home indicator -->
+          <rect
+            x="112"
+            y="556"
+            width="76"
+            height="3.5"
+            rx="2"
+            fill="#2C2C2A"
+            opacity="0.18"></rect>
+        </svg>
+      </div>
+
+      <p class="tq-body text-lg md:text-xl leading-relaxed opacity-70 max-w-lg">
+        Share a URL from any app. Tranquil finds the article, strips everything
+        else, and hands it back — clean.
+      </p>
+    </section>
+
+    <!-- ─── RULE ──────────────────────────────────────────────── -->
+    <div class="max-w-5xl mx-auto px-8">
+      <hr class="tq-rule" />
+    </div>
+
+    <!-- ─── PHILOSOPHY ───────────────────────────────────────── -->
+    <section class="max-w-5xl mx-auto px-8 py-32">
+      <div class="grid md:grid-cols-2 gap-16 items-start">
+        <div>
+          <h2
+            class="tq-serif text-5xl md:text-6xl font-light italic leading-tight mb-0"
+            style="color: var(--tq-ink); letter-spacing: -0.02em;"
+          >
+            Reading is not<br />the problem.
+          </h2>
+        </div>
+
+        <div
+          class="tq-body space-y-5 text-base md:text-lg leading-relaxed opacity-75 pt-2"
+        >
+          <p>
+            The web buries every article under layers of advertisement,
+            notification prompts, autoplay video, and artificially inflated word
+            counts. The signal is there. It's simply hidden.
+          </p>
+          <p>
+            Tranquil is a <em>distiller</em>. Share any URL — from a search
+            result, a news app, a social link — and Tranquil follows every
+            redirect, defeats most blockers, and surfaces the only the original
+            text.
+          </p>
+          <p>
+            Then it stops. No history. No account. No cloud. Nothing persists.
+            You read, and then it's gone. Or you share what you found.
+          </p>
+          <p>
+            If you choose, Gemini Nano can then distill the article to a single
+            sentence and a quiet bulleted list of insights — all on-device if
+            possible, or using you own Gemini API cloud account key.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── RULE ──────────────────────────────────────────────── -->
+    <div class="max-w-5xl mx-auto px-8">
+      <hr class="tq-rule" />
+    </div>
+
+    <!-- ─── HOW IT WORKS (Three Acts) ───────────────────────── -->
+    <section class="max-w-5xl mx-auto px-8 py-32">
+      <p
+        class="tq-serif text-xs tracking-[0.3em] uppercase opacity-40 mb-20 text-center"
+      >
+        How it works
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-16">
+        <div>
+          <p
+            class="tq-serif text-6xl font-extralight opacity-20 mb-6 leading-none"
+          >
+            I.
+          </p>
+          <h3
+            class="tq-serif text-2xl font-medium italic mb-4"
+            style="letter-spacing: -0.01em;"
+          >
+            Share
+          </h3>
+          <p class="tq-body text-base leading-relaxed opacity-65">
+            Tap the share button in any app — browser, search, news reader,
+            social media. Select Tranquil.
+          </p>
+        </div>
+
+        <div>
+          <p
+            class="tq-serif text-6xl font-extralight opacity-20 mb-6 leading-none"
+          >
+            II.
+          </p>
+          <h3
+            class="tq-serif text-2xl font-medium italic mb-4"
+            style="letter-spacing: -0.01em;"
+          >
+            Extract
+          </h3>
+          <p class="tq-body text-base leading-relaxed opacity-65">
+            Deep extraction follows every redirect and wrapper. Readability
+            parsing isolates the article. On-device Gemini Nano distills the
+            insight.
+          </p>
+        </div>
+
+        <div>
+          <p
+            class="tq-serif text-6xl font-extralight opacity-20 mb-6 leading-none"
+          >
+            III.
+          </p>
+          <h3
+            class="tq-serif text-2xl font-medium italic mb-4"
+            style="letter-spacing: -0.01em;"
+          >
+            Read
+          </h3>
+          <p class="tq-body text-base leading-relaxed opacity-65">
+            Two tabs. <em>Story</em> — the clean, typeset article.
+            <em>Insights</em> — the AI distillation: one sentence and a quiet bulleted
+            summary.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── RULE ──────────────────────────────────────────────── -->
+    <div class="max-w-5xl mx-auto px-8">
+      <hr class="tq-rule" />
+    </div>
+
+    <!-- ─── FEATURES (Typographic list) ─────────────────────── -->
+    <section class="max-w-5xl mx-auto px-8 py-32">
+      <div class="grid md:grid-cols-2 gap-x-24 gap-y-0">
+        <div class="mb-0">
+          <h2
+            class="tq-serif text-4xl md:text-5xl font-light leading-tight italic mb-16"
+            style="letter-spacing: -0.02em;"
+          >
+            Everything<br />by design.
+          </h2>
+        </div>
+
+        <div class="tq-body divide-y tq-dividers">
+          <div class="py-7">
+            <p class="tq-serif text-lg font-medium mb-1">Calm Typography</p>
+            <p class="text-sm leading-relaxed opacity-60">
+              Literata and Newsreader. Generous leading. No images, no alerts,
+              no engagement mechanics.
+            </p>
+          </div>
+
+          <div class="py-7">
+            <p class="tq-serif text-lg font-medium mb-1">Deep Extraction</p>
+            <p class="text-sm leading-relaxed opacity-60">
+              Follows meta-refresh redirects, unwraps Google Search and AMP
+              URLs, and surfaces the canonical article.
+            </p>
+          </div>
+
+          <div class="py-7">
+            <p class="tq-serif text-lg font-medium mb-1">Insights</p>
+            <p class="text-sm leading-relaxed opacity-60">
+              Distills the article to a single sentence and a quiet bulleted
+              list of insights using Gemini Nano. On-device if possible, or your
+              own Gemini Cloud API key.
+            </p>
+          </div>
+
+          <div class="py-7">
+            <p class="tq-serif text-lg font-medium mb-1">Multi-Format Input</p>
+            <p class="text-sm leading-relaxed opacity-60">
+              Accepts URLs, raw HTML, Markdown, or plain text — whatever your
+              app shares.
+            </p>
+          </div>
+
+          <div class="py-7">
+            <p class="tq-serif text-lg font-medium mb-1">Strictly Ephemeral</p>
+            <p class="text-sm leading-relaxed opacity-60">
+              No reading history, no account, no cloud sync. Tranquil stores
+              nothing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── RULE ──────────────────────────────────────────────── -->
+    <div class="max-w-5xl mx-auto px-8">
+      <hr class="tq-rule" />
+    </div>
+
+    <!-- ─── PULL QUOTE ────────────────────────────────────────── -->
+    <section class="max-w-3xl mx-auto px-8 py-40 text-center">
+      <blockquote
+        class="tq-serif text-3xl md:text-4xl font-light italic leading-snug"
+        style="color: var(--tq-ink); letter-spacing: -0.02em; opacity: 0.8;"
+      >
+        "Not a reader application.<br />
+        A distillation instrument."
+      </blockquote>
+      <p class="tq-body text-sm opacity-35 mt-8 tracking-widest uppercase">
+        — Design principle
+      </p>
+    </section>
+
+    <!-- ─── RULE ──────────────────────────────────────────────── -->
+    <div class="max-w-5xl mx-auto px-8">
+      <hr class="tq-rule" />
+    </div>
+
+    <!-- ─── CTA ───────────────────────────────────────────────── -->
+    <section
+      class="max-w-5xl mx-auto px-8 py-32 flex flex-col items-center text-center"
+    >
+      <h2
+        class="tq-serif text-4xl md:text-5xl font-light italic mb-6"
+        style="letter-spacing: -0.02em;"
+      >
+        Read without noise.
+      </h2>
+
+      <p class="tq-body text-base opacity-60 mb-14 max-w-sm leading-relaxed">
+        Requires Android 15 and a Pixel 8 or later for on-device AI
+        distillation. Android 10+ with Gemini Cloud API key.
+      </p>
+
+      <a
+        href="https://play.google.com/store/apps"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block"
+      >
+        <img
+          alt="Get it on Google Play"
+          src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+          style="height: 64px; opacity: 0.85;"
+        />
+      </a>
+
+      <p class="tq-body text-xs opacity-30 mt-12 tracking-widest uppercase">
+        Affordable &nbsp;·&nbsp; No ads &nbsp;·&nbsp; No account
+      </p>
+    </section>
+
+    <!-- Bottom breathing room -->
+    <div class="h-16"></div>
+  </div>
 </ProductLayout>
