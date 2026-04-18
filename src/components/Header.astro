@@ -1,5 +1,7 @@
 ---
 import Logo from './Logo.astro';
+import LanguagePicker from './LanguagePicker.astro';
+import { getLangFromUrl, defaultLang } from '../i18n/utils';
 
 interface Props {
   transparent?: boolean;
@@ -8,6 +10,9 @@ interface Props {
 }
 
 const { transparent = true, logoSize = 'md', compact = false } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const homeUrl = lang === defaultLang ? '/' : `/${lang}/`;
 
 const baseNavClass = compact ? 'product-nav' : 'main-nav';
 
@@ -24,7 +29,7 @@ const paddingClass = compact ? 'p-6' : 'px-6 py-8';
 
 <nav id="main-nav" class:list={[baseNavClass, navClass, paddingClass]} style={!transparent ? 'background-color: var(--bg-primary);' : undefined}>
   <div class={containerClass}>
-    <a href="/">
+    <a href={homeUrl}>
       <div class="flex items-center gap-3">
         <div class="logo-container transition-all duration-300" class:list={[!compact && 'w-20 h-20 flex items-center justify-center']}>
           <Logo size={logoSize} />
@@ -34,8 +39,9 @@ const paddingClass = compact ? 'p-6' : 'px-6 py-8';
         </span>
       </div>
     </a>
-    <div>
+    <div class="flex items-center gap-8">
       <slot />
+      <LanguagePicker />
     </div>
   </div>
 </nav>

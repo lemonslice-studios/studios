@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { getLangFromUrl } from '../i18n/utils';
 
 interface Props {
   title: string;
@@ -14,10 +15,12 @@ const {
   favicon = '/img/lemon.svg',
   analyticsId = '8541e245-eff0-4999-a62a-1a5cdf2f11aa',
 } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
