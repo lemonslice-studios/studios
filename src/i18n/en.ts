@@ -52,5 +52,5 @@ export const en = {
   "footer.privacy": "Privacy",
   "footer.legal": "Legal",
   "footer.contact": "Contact",
-  "footer.copyright": "&copy; 2026 Crafted in Germany."
+  "footer.copyright": "&copy; 2026 Crafted in Frankfurt (Germany) and Fukuoka (Japan)."
 };
