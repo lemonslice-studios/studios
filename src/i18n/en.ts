@@ -42,7 +42,7 @@ export const en = {
   "ambiance.features.title": "Simple. <span class=\"text-gradient\">Powerful.</span>",
   "ambiance.screenshot1.text": "Open Ambiance Wallpaper. Select your \"Light Mode\" and \"Dark Mode\" photos, or use our beautiful default images.",
   "ambiance.screenshot2.text": "Set it once, and let your phone match your mood, all day and all night. No more manual switching.",
-  "ambiance.screenshot3.text": "When your device shifts to or from Dark Mode&mdash;whether manually, by schedule, or based on sunset&mdash;your wallpaper follows instantly.",
+  "ambiance.screenshot3.text": "When your device shifts to or from Dark Mode—whether manually, by schedule, or based on sunset—your wallpaper follows instantly.",
   "ambiance.feat.sync.title": "Automatic Sync",
   "ambiance.feat.sync.desc": "Syncs perfectly with Android's system dark mode. Switch instantly without opening the app.",
   "ambiance.feat.privacy.title": "Privacy First",
