@@ -5,10 +5,11 @@ const lang = getLangFromUrl(Astro.url);
 const currentPath = Astro.url;
 ---
 
-<div class="flex gap-2 text-xs font-bold uppercase tracking-widest">
+<div class="flex gap-2 text-xs font-bold uppercase tracking-widest" data-language-picker>
   {Object.entries(languages).map(([code, label]) => (
     <a
       href={getLocalizedPathname(currentPath, code as any)}
+      data-lang={code}
       class:list={[
         "hover:text-yellow-600 transition",
         lang === code ? "text-yellow-600" : "text-slate-400"
@@ -18,3 +19,16 @@ const currentPath = Astro.url;
     </a>
   ))}
 </div>
+
+<script>
+  const preferredLangStorageKey = 'preferred-lang';
+
+  document.querySelectorAll('[data-language-picker] a[data-lang]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const selectedLang = link.getAttribute('data-lang');
+      if (selectedLang) {
+        localStorage.setItem(preferredLangStorageKey, selectedLang);
+      }
+    });
+  });
+</script>

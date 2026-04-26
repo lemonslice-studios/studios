@@ -3,3 +3,23 @@ import IndexTemplate from '../components/IndexTemplate.astro';
 ---
 
 <IndexTemplate />
+
+<script>
+  const preferredLangStorageKey = 'preferred-lang';
+  const savedLang = localStorage.getItem(preferredLangStorageKey);
+
+  if (savedLang === 'ja') {
+    window.location.replace('/ja/');
+  } else if (!savedLang) {
+    const prefersJapanese = (
+      navigator.languages || [navigator.language]
+    ).some((lang) => typeof lang === 'string' && lang.toLowerCase().startsWith('ja'));
+
+    if (prefersJapanese) {
+      localStorage.setItem(preferredLangStorageKey, 'ja');
+      window.location.replace('/ja/');
+    } else {
+      localStorage.setItem(preferredLangStorageKey, 'en');
+    }
+  }
+</script>
