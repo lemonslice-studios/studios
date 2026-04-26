@@ -1,0 +1,146 @@
+---
+import ProductLayout from '../layouts/ProductLayout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const ambianceFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='17' viewBox='0 0 22 17'><path fill='%232196F3' d='M1.02 17c-0.42 0-0.72-0.18-0.9-0.55-0.19-0.37-0.15-0.72 0.1-1.05l4-5.33c0.1-0.13 0.22-0.23 0.36-0.3 0.14-0.06 0.29-0.1 0.44-0.1 0.15 0 0.3 0.04 0.43 0.1 0.15 0.07 0.27 0.17 0.37 0.3L9.52 15h7.5l-5-6.65-1.7 2.25c-0.2 0.27-0.44 0.4-0.7 0.41-0.27 0.01-0.5-0.06-0.7-0.21-0.2-0.15-0.34-0.35-0.4-0.61-0.07-0.26 0-0.52 0.2-0.79l2.5-3.33c0.1-0.13 0.22-0.23 0.36-0.3 0.14-0.06 0.29-0.1 0.44-0.1 0.15 0 0.3 0.04 0.43 0.1 0.15 0.07 0.27 0.17 0.37 0.3l7 9.33c0.25 0.33 0.28 0.68 0.1 1.05-0.19 0.37-0.49 0.55-0.9 0.55h-18Z'/><path fill='%23FFC107' d='M21.02 3c0 1.66-1.35 3-3 3-1.66 0-3-1.34-3-3s1.34-3 3-3c1.65 0 3 1.34 3 3Z'/></svg>";
+---
+
+<ProductLayout
+  title={t('ambiance.page.title')}
+  description={t('ambiance.page.description')}
+  favicon={ambianceFavicon}
+>
+  <div class="bg-slate-50 font-sans antialiased text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-6 py-40 flex flex-col items-center text-center">
+      <h1 class="text-6xl md:text-8xl font-extrabold mb-6 tracking-tight text-gradient">
+        Ambiance
+      </h1>
+
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-10 tracking-tight dark:text-white" set:html={t('ambiance.hero.subtitle')}>
+      </h2>
+
+      <p class="text-xl text-slate-600 max-w-2xl mb-10 dark:text-slate-400">
+        {t('ambiance.hero.p1')}
+      </p>
+
+      <!-- App Preview Mockup -->
+      <div class="relative w-full max-w-4xl h-96 rounded-3xl overflow-hidden shadow-2xl border-8 border-slate-900 dark:border-slate-800 split-bg mb-20 flex">
+        <div class="w-1/2 flex items-center justify-center">
+          <span class="hidden md:block text-slate-600 font-bold opacity-20 text-4xl uppercase tracking-widest" set:html={t('ambiance.hero.dark_mode')}></span>
+        </div>
+        <div class="w-1/2 flex items-center justify-center">
+          <span class="hidden md:block text-slate-400 font-bold opacity-20 text-4xl uppercase tracking-widest" set:html={t('ambiance.hero.light_mode')}></span>
+        </div>
+        <!-- Central Divider Phone -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div class="w-48 h-80 bg-white dark:bg-slate-900 rounded-[3rem] border-4 border-slate-800 dark:border-slate-700 shadow-xl relative overflow-hidden">
+            <div class="absolute inset-0 flex">
+              <img src="/ambiance/wp.png" alt="Wallpaper Preview" class="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed dark:text-slate-400">
+        <em class="font-semibold text-slate-900 dark:text-white not-italic">{t('ambiance.hero.quote')}</em>
+        <br /><br />
+        {t('ambiance.hero.p2')}
+      </p>
+
+      <!-- CTA Section -->
+      <div class="mt-16">
+        <a href="https://play.google.com/store/apps/details?id=de.lemonslice.ambiance" target="_blank" rel="noopener noreferrer" class="inline-block hover:opacity-80 transition">
+          <img
+            alt="Get it on Google Play"
+            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+            style="height: 60px;"
+          />
+        </a>
+      </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="max-w-7xl mx-auto px-6 py-24">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 dark:text-white" set:html={t('ambiance.features.title')}>
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-12">
+        <!-- Screenshot 1 -->
+        <div class="flex flex-col items-center">
+          <div class="w-64 h-auto overflow-hidden mb-6">
+            <!-- Light mode screenshot -->
+            <img src="/ambiance/screenshot1-light.png" alt="Screenshot 1 Light" class="w-full h-auto block dark:hidden" />
+            <!-- Dark mode screenshot -->
+            <img src="/ambiance/screenshot1-dark.png" alt="Screenshot 1 Dark" class="w-full h-auto hidden dark:block" />
+          </div>
+          <p class="text-center text-slate-600 dark:text-slate-400 max-w-xs">
+            {t('ambiance.screenshot1.text')}
+          </p>
+        </div>
+
+        <!-- Screenshot 2 -->
+        <div class="flex flex-col items-center">
+          <div class="w-64 h-auto overflow-hidden mb-6">
+            <!-- Light mode screenshot -->
+            <img src="/ambiance/screenshot2-light.png" alt="Screenshot 2 Light" class="w-full h-auto block dark:hidden" />
+            <!-- Dark mode screenshot -->
+            <img src="/ambiance/screenshot2-dark.png" alt="Screenshot 2 Dark" class="w-full h-auto hidden dark:block" />
+          </div>
+          <p class="text-center text-slate-600 dark:text-slate-400 max-w-xs">
+            {t('ambiance.screenshot2.text')}
+          </p>
+        </div>
+
+        <!-- Screenshot 3 -->
+        <div class="flex flex-col items-center">
+          <div class="w-64 h-auto overflow-hidden mb-6">
+            <!-- Light mode screenshot -->
+            <img src="/ambiance/screenshot3-light.png" alt="Screenshot 3 Light" class="w-full h-auto block dark:hidden" />
+            <!-- Dark mode screenshot -->
+            <img src="/ambiance/screenshot3-dark.png" alt="Screenshot 3 Dark" class="w-full h-auto hidden dark:block" />
+          </div>
+          <p class="text-center text-slate-600 dark:text-slate-400 max-w-xs">
+            {t('ambiance.screenshot3.text')}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="bg-white dark:bg-slate-900 py-24">
+      <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+        <div class="space-y-4">
+          <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 text-2xl">
+            &#x1F317;
+          </div>
+          <h3 class="text-xl font-bold dark:text-white">{t('ambiance.feat.sync.title')}</h3>
+          <p class="text-slate-600 dark:text-slate-400">
+            {t('ambiance.feat.sync.desc')}
+          </p>
+        </div>
+        <div class="space-y-4">
+          <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center text-green-600 dark:text-green-400 text-2xl">
+            &#x1F512;
+          </div>
+          <h3 class="text-xl font-bold dark:text-white">{t('ambiance.feat.privacy.title')}</h3>
+          <p class="text-slate-600 dark:text-slate-400">
+            {t('ambiance.feat.privacy.desc')}
+          </p>
+        </div>
+        <div class="space-y-4">
+          <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center text-purple-600 dark:text-purple-400 text-2xl">
+            &#x1F50B;
+          </div>
+          <h3 class="text-xl font-bold dark:text-white">{t('ambiance.feat.battery.title')}</h3>
+          <p class="text-slate-600 dark:text-slate-400">
+            {t('ambiance.feat.battery.desc')}
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</ProductLayout>
