@@ -27,6 +27,9 @@ concurrency:
 env:
   BUILD_PATH: "." # default value when not using subfolders
   # BUILD_PATH: subfolder
+  # Optional repository variables for custom domain deployments:
+  # PAGES_SITE_URL: e.g. https://studios.lemonslice.de
+  # PAGES_BASE_PATH: e.g. /
 
 jobs:
   build:
@@ -47,9 +50,12 @@ jobs:
         working-directory: ${{ env.BUILD_PATH }}
       - name: Build with Astro
         run: |
+          SITE_URL="${{ vars.PAGES_SITE_URL || steps.pages.outputs.origin }}"
+          BASE_PATH="${{ vars.PAGES_BASE_PATH || steps.pages.outputs.base_path }}"
+
           bunx --bun astro build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
+            --site "$SITE_URL" \
+            --base "$BASE_PATH"
         working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
