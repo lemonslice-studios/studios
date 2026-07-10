@@ -12,7 +12,7 @@ interface Props {
 const {
   title,
   description = 'Lemon Slice Studios - Quietly Useful Android Apps',
-  favicon = '/img/lemon.svg',
+  favicon = `${import.meta.env.BASE_URL}img/lemon.svg`,
   analyticsId = '8541e245-eff0-4999-a62a-1a5cdf2f11aa',
 } = Astro.props;
 
@@ -35,7 +35,8 @@ const lang = getLangFromUrl(Astro.url);
     <slot />
     <script is:inline>
       const preferredLangStorageKey = 'preferred-lang';
-      if (window.location.pathname.startsWith('/ja/')) {
+      const baseUrl = import.meta.env.BASE_URL;
+      if (window.location.pathname.startsWith(`${baseUrl}ja/`)) {
         localStorage.setItem(preferredLangStorageKey, 'ja');
       }
     </script>

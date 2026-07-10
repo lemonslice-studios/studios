@@ -4,6 +4,7 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const baseUrl = import.meta.env.BASE_URL;
 
 const ambianceFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='17' viewBox='0 0 22 17'><path fill='%232196F3' d='M1.02 17c-0.42 0-0.72-0.18-0.9-0.55-0.19-0.37-0.15-0.72 0.1-1.05l4-5.33c0.1-0.13 0.22-0.23 0.36-0.3 0.14-0.06 0.29-0.1 0.44-0.1 0.15 0 0.3 0.04 0.43 0.1 0.15 0.07 0.27 0.17 0.37 0.3L9.52 15h7.5l-5-6.65-1.7 2.25c-0.2 0.27-0.44 0.4-0.7 0.41-0.27 0.01-0.5-0.06-0.7-0.21-0.2-0.15-0.34-0.35-0.4-0.61-0.07-0.26 0-0.52 0.2-0.79l2.5-3.33c0.1-0.13 0.22-0.23 0.36-0.3 0.14-0.06 0.29-0.1 0.44-0.1 0.15 0 0.3 0.04 0.43 0.1 0.15 0.07 0.27 0.17 0.37 0.3l7 9.33c0.25 0.33 0.28 0.68 0.1 1.05-0.19 0.37-0.49 0.55-0.9 0.55h-18Z'/><path fill='%23FFC107' d='M21.02 3c0 1.66-1.35 3-3 3-1.66 0-3-1.34-3-3s1.34-3 3-3c1.65 0 3 1.34 3 3Z'/></svg>";
 ---
@@ -39,7 +40,7 @@ const ambianceFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/s
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div class="w-48 h-80 bg-white dark:bg-slate-900 rounded-[3rem] border-4 border-slate-800 dark:border-slate-700 shadow-xl relative overflow-hidden">
             <div class="absolute inset-0 flex">
-              <img src="/ambiance/wp.png" alt="Wallpaper Preview" class="w-full h-full object-cover" />
+              <img src={`${baseUrl}ambiance/wp.png`} alt="Wallpaper Preview" class="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -73,9 +74,9 @@ const ambianceFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/s
         <div class="flex flex-col items-center">
           <div class="w-64 h-auto overflow-hidden mb-6">
             <!-- Light mode screenshot -->
-            <img src="/ambiance/screenshot1-light.png" alt="Screenshot 1 Light" class="w-full h-auto block dark:hidden" />
+            <img src={`${baseUrl}ambiance/screenshot1-light.png`} alt="Screenshot 1 Light" class="w-full h-auto block dark:hidden" />
             <!-- Dark mode screenshot -->
-            <img src="/ambiance/screenshot1-dark.png" alt="Screenshot 1 Dark" class="w-full h-auto hidden dark:block" />
+            <img src={`${baseUrl}ambiance/screenshot1-dark.png`} alt="Screenshot 1 Dark" class="w-full h-auto hidden dark:block" />
           </div>
           <p class="text-center text-slate-600 dark:text-slate-400 max-w-xs">
             {t('ambiance.screenshot1.text')}
@@ -86,9 +87,9 @@ const ambianceFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/s
         <div class="flex flex-col items-center">
           <div class="w-64 h-auto overflow-hidden mb-6">
             <!-- Light mode screenshot -->
-            <img src="/ambiance/screenshot2-light.png" alt="Screenshot 2 Light" class="w-full h-auto block dark:hidden" />
+            <img src={`${baseUrl}ambiance/screenshot2-light.png`} alt="Screenshot 2 Light" class="w-full h-auto block dark:hidden" />
             <!-- Dark mode screenshot -->
-            <img src="/ambiance/screenshot2-dark.png" alt="Screenshot 2 Dark" class="w-full h-auto hidden dark:block" />
+            <img src={`${baseUrl}ambiance/screenshot2-dark.png`} alt="Screenshot 2 Dark" class="w-full h-auto hidden dark:block" />
           </div>
           <p class="text-center text-slate-600 dark:text-slate-400 max-w-xs">
             {t('ambiance.screenshot2.text')}
@@ -99,9 +100,9 @@ const ambianceFavicon = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/s
         <div class="flex flex-col items-center">
           <div class="w-64 h-auto overflow-hidden mb-6">
             <!-- Light mode screenshot -->
-            <img src="/ambiance/screenshot3-light.png" alt="Screenshot 3 Light" class="w-full h-auto block dark:hidden" />
+            <img src={`${baseUrl}ambiance/screenshot3-light.png`} alt="Screenshot 3 Light" class="w-full h-auto block dark:hidden" />
             <!-- Dark mode screenshot -->
-            <img src="/ambiance/screenshot3-dark.png" alt="Screenshot 3 Dark" class="w-full h-auto hidden dark:block" />
+            <img src={`${baseUrl}ambiance/screenshot3-dark.png`} alt="Screenshot 3 Dark" class="w-full h-auto hidden dark:block" />
           </div>
           <p class="text-center text-slate-600 dark:text-slate-400 max-w-xs">
             {t('ambiance.screenshot3.text')}

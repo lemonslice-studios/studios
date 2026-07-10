@@ -16,8 +16,33 @@ export const ui = {
 export type Lang = keyof typeof ui;
 export type UiKey = keyof typeof en;
 
+function getBasePath() {
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  const trimmed = baseUrl.replace(/^\/|\/$/g, '');
+  return trimmed ? `/${trimmed}` : '';
+}
+
+function stripBasePath(pathname: string) {
+  const basePath = getBasePath();
+
+  if (!basePath) return pathname;
+  if (pathname === basePath) return '/';
+  if (pathname.startsWith(`${basePath}/`)) return pathname.slice(basePath.length);
+
+  return pathname;
+}
+
+function withBasePath(pathname: string) {
+  const basePath = getBasePath();
+  const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
+
+  if (!basePath) return normalizedPath;
+  return `${basePath}${normalizedPath}`.replace(/\/+/g, '/');
+}
+
 export function getLangFromUrl(url: URL) {
-  const [, lang] = url.pathname.split('/');
+  const pathname = stripBasePath(url.pathname);
+  const [, lang] = pathname.split('/');
   if (lang in ui) return lang as Lang;
   return defaultLang;
 }
@@ -29,7 +54,8 @@ export function useTranslations(lang: Lang) {
 }
 
 export function getLocalizedPathname(url: URL, lang: Lang) {
-  const segments = url.pathname.split('/');
+  const pathname = stripBasePath(url.pathname);
+  const segments = pathname.split('/');
   
   // segments[0] is always "" because pathname starts with /
   
@@ -50,6 +76,6 @@ export function getLocalizedPathname(url: URL, lang: Lang) {
   
   // Fix double slashes at the beginning if they occur
   path = path.replace(/\/+/g, '/');
-  
-  return path;
+
+  return withBasePath(path);
 }

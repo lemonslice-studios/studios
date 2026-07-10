@@ -7,9 +7,11 @@ import IndexTemplate from '../components/IndexTemplate.astro';
 <script>
   const preferredLangStorageKey = 'preferred-lang';
   const savedLang = localStorage.getItem(preferredLangStorageKey);
+  const baseUrl = import.meta.env.BASE_URL;
+  const jaPath = `${baseUrl}ja/`;
 
   if (savedLang === 'ja') {
-    window.location.replace('/ja/');
+    window.location.replace(jaPath);
   } else if (!savedLang) {
     const prefersJapanese = (
       navigator.languages || [navigator.language]
@@ -17,7 +19,7 @@ import IndexTemplate from '../components/IndexTemplate.astro';
 
     if (prefersJapanese) {
       localStorage.setItem(preferredLangStorageKey, 'ja');
-      window.location.replace('/ja/');
+      window.location.replace(jaPath);
     } else {
       localStorage.setItem(preferredLangStorageKey, 'en');
     }

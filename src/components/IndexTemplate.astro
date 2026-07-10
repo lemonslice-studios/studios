@@ -4,7 +4,8 @@ import { getLangFromUrl, useTranslations, defaultLang } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const prefix = lang === defaultLang ? "" : `/${lang}`;
+const baseUrl = import.meta.env.BASE_URL;
+const localizedBase = lang === defaultLang ? baseUrl : `${baseUrl}${lang}/`;
 ---
 
 <MainLayout title={t("site.title")} description={t("site.description")}>
@@ -22,7 +23,7 @@ const prefix = lang === defaultLang ? "" : `/${lang}`;
       />
     </div>
     <div class="w-48 h-32 mt-16 ml-auto mr-16">
-      <img src="/img/android-head_3D.svg" alt="Android Robot Head Image" />
+      <img src={`${baseUrl}img/android-head_3D.svg`} alt="Android Robot Head Image" />
     </div>
   </section>
 
@@ -45,7 +46,7 @@ const prefix = lang === defaultLang ? "" : `/${lang}`;
       <div class="grid md:grid-cols-2 gap-8">
         <!-- App Card 1 -->
         <a
-          href={`${prefix}/ambiance/`}
+          href={`${localizedBase}ambiance/`}
           class="app-card group block p-8 rounded-[2.5rem] transition-all border hover:border-yellow-200 soft-shadow dark:bg-slate-700 dark:border-slate-600"
           style="background-color: var(--bg-card); border-color: var(--border-color);"
         >

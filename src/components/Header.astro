@@ -12,7 +12,8 @@ interface Props {
 const { transparent = true, logoSize = 'md', compact = false } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
-const homeUrl = lang === defaultLang ? '/' : `/${lang}/`;
+const baseUrl = import.meta.env.BASE_URL;
+const homeUrl = lang === defaultLang ? baseUrl : `${baseUrl}${lang}/`;
 
 const baseNavClass = compact ? 'product-nav' : 'main-nav';
 
