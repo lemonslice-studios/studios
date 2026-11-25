@@ -75,6 +75,7 @@ public/
 
 - **/** - Main landing page with studio info, portfolio, and philosophy
 - **/ambiance/** - Ambiance Wallpaper product page
+- **/ambiance/tos.html** - Ambiance Terms of Service
 - **/privacy-policy/** - Privacy policy
 
 ## License
