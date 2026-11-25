@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html data-theme="quiet" data-font-family="sans-serif">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clipboard</title>
+    <style>
+        /* ── Colour tokens (Theme-aware) ── */
+
+        /* Quiet Theme - Light (Base) */
+        [data-theme="quiet"] {
+            --prose-bg: #ffffff;
+            --prose-canvas: #f3f0ff;
+            --prose-text: #1d1b20;
+            --prose-muted: #555555;
+            --prose-border: #dfd9f2;
+            --prose-code-bg: #f5f5f5;
+            --prose-quote-border: #aaaaaa;
+        }
+
+        /* Quiet Theme - Dark (Explicit) */
+        [data-theme="quiet"][data-color-scheme="dark"],
+        [data-theme="quiet"][data-color-scheme="system"][data-system-dark="true"] {
+            --prose-bg: #1c1b1f;
+            --prose-canvas: #111116;
+            --prose-text: #e6e0e9;
+            --prose-muted: #a09aac;
+            --prose-border: #2e2e3e;
+            --prose-code-bg: #2b2930;
+            --prose-quote-border: #6b6573;
+        }
+
+        /* Clean Theme - Light (Base) */
+        [data-theme="clean"] {
+            --prose-bg: #ffffff;
+            --prose-canvas: #f2f2f7;
+            --prose-text: #000000;
+            --prose-muted: #8e8e93;
+            --prose-border: #d1d1d6;
+            --prose-code-bg: #f2f2f7;
+            --prose-quote-border: #c7c7cc;
+        }
+
+        /* Clean Theme - Dark (Explicit) */
+        [data-theme="clean"][data-color-scheme="dark"],
+        [data-theme="clean"][data-color-scheme="system"][data-system-dark="true"] {
+            --prose-bg: #000000;
+            --prose-canvas: #1c1c1e;
+            --prose-text: #ffffff;
+            --prose-muted: #8e8e93;
+            --prose-border: #38383a;
+            --prose-code-bg: #1c1c1e;
+            --prose-quote-border: #38383a;
+        }
+
+
+        @media (prefers-color-scheme: dark) {
+            [data-theme="quiet"] {
+                --prose-bg: #1c1b1f;
+                --prose-canvas: #111116;
+                --prose-text: #e6e0e9;
+                --prose-muted: #a09aac;
+                --prose-border: #2e2e3e;
+                --prose-code-bg: #2b2930;
+                --prose-quote-border: #6b6573;
+            }
+
+            [data-theme="clean"] {
+                --prose-bg: #000000;
+                --prose-canvas: #1c1c1e;
+                --prose-text: #ffffff;
+                --prose-muted: #8e8e93;
+                --prose-border: #38383a;
+                --prose-code-bg: #1c1c1e;
+                --prose-quote-border: #38383a;
+            }
+        }
+
+
+        /* ── Base ── */
+        html,
+        body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: var(--prose-bg);
+            color: var(--prose-text);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color-scheme: light dark;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            overscroll-behavior: none;
+        }
+
+        html[data-font-family="serif"],
+        html[data-font-family="serif"] body,
+        html[data-font-family="serif"] h1,
+        html[data-font-family="serif"] h2,
+        html[data-font-family="serif"] h3,
+        html[data-font-family="serif"] h4,
+        html[data-font-family="serif"] h5,
+        html[data-font-family="serif"] h6,
+        html[data-font-family="serif"] .markdown-body h1,
+        html[data-font-family="serif"] .markdown-body h2,
+        html[data-font-family="serif"] .markdown-body h3 {
+            font-family: 'Lora', 'Georgia', 'Times New Roman', serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        /* ── Prose body ── */
+        .markdown-body {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            color: inherit;
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .markdown-body p,
+        .markdown-body ul,
+        .markdown-body ol,
+        .markdown-body blockquote,
+        .markdown-body pre,
+        .markdown-body table {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        /* ── Headings ── */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: inherit;
+            line-height: 1.2;
+            color: var(--prose-text);
+        }
+
+        .markdown-body h1 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin: 2rem 0 1rem;
+        }
+
+        .markdown-body h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .markdown-body h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        p {
+            margin: 0 0 0.9em;
+        }
+
+        .markdown-body strong,
+        .markdown-body b {
+            font-weight: 600;
+        }
+
+        .markdown-body em,
+        .markdown-body i {
+            font-style: italic;
+        }
+
+        .markdown-body ul,
+        .markdown-body ol {
+            padding-left: 1.5rem;
+        }
+
+        .markdown-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .markdown-body li>p {
+            margin-bottom: 0.25rem;
+        }
+
+        /* ── Code ── */
+        pre,
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88em;
+        }
+
+        code {
+            background: var(--prose-code-bg);
+            padding: 0.15em 0.35em;
+            border-radius: 3px;
+        }
+
+        pre {
+            background: var(--prose-code-bg);
+            padding: 0.8em 1em;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        /* ── Blockquote ── */
+        blockquote {
+            border-left: 3px solid var(--prose-quote-border);
+            margin-left: 0;
+            padding-left: 1em;
+            color: var(--prose-muted);
+            font-style: italic;
+        }
+
+        /* ── Table ── */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1em;
+        }
+
+        th,
+        td {
+            border: 1px solid var(--prose-border);
+            padding: 0.4em 0.7em;
+            text-align: left;
+        }
+
+        th {
+            background: var(--prose-code-bg);
+        }
+
+        /* ── Misc ── */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* KaTeX MathML — block centering only; browser renders the math natively */
+        .katex-block {
+            text-align: center;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .katex-block .katex {
+            display: inline-block;
+        }
+
+        /* ── Syntax highlighting (highlight.js) ── */
+        :root {
+            --hljs-keyword: #6366f1;
+            --hljs-string: #059669;
+            --hljs-comment: #9ca3af;
+            --hljs-number: #d97706;
+            --hljs-type: #0891b2;
+            --hljs-builtin: #7c3aed;
+            --hljs-attr: #0369a1;
+            --hljs-title: #1d4ed8;
+            --hljs-meta: #64748b;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --hljs-keyword: #818cf8;
+                --hljs-string: #34d399;
+                --hljs-comment: #6b7280;
+                --hljs-number: #fbbf24;
+                --hljs-type: #22d3ee;
+                --hljs-builtin: #a78bfa;
+                --hljs-attr: #38bdf8;
+                --hljs-title: #93c5fd;
+                --hljs-meta: #94a3b8;
+            }
+        }
+
+        html[data-color-scheme="light"] {
+            --hljs-keyword: #6366f1;
+            --hljs-string: #059669;
+            --hljs-comment: #9ca3af;
+            --hljs-number: #d97706;
+            --hljs-type: #0891b2;
+            --hljs-builtin: #7c3aed;
+            --hljs-attr: #0369a1;
+            --hljs-title: #1d4ed8;
+            --hljs-meta: #64748b;
+        }
+
+        html[data-color-scheme="dark"] {
+            --hljs-keyword: #818cf8;
+            --hljs-string: #34d399;
+            --hljs-comment: #6b7280;
+            --hljs-number: #fbbf24;
+            --hljs-type: #22d3ee;
+            --hljs-builtin: #a78bfa;
+            --hljs-attr: #38bdf8;
+            --hljs-title: #93c5fd;
+            --hljs-meta: #94a3b8;
+        }
+
+        .hljs-keyword,
+        .hljs-operator,
+        .hljs-reserved {
+            color: var(--hljs-keyword);
+            font-weight: 500;
+        }
+
+        .hljs-string,
+        .hljs-template-string,
+        .hljs-template-tag,
+        .hljs-regexp {
+            color: var(--hljs-string);
+        }
+
+        .hljs-comment,
+        .hljs-quote {
+            color: var(--hljs-comment);
+            font-style: italic;
+        }
+
+        .hljs-number,
+        .hljs-literal,
+        .hljs-symbol,
+        .hljs-link {
+            color: var(--hljs-number);
+        }
+
+        .hljs-type,
+        .hljs-class,
+        .hljs-variable.language_ {
+            color: var(--hljs-type);
+        }
+
+        .hljs-built_in,
+        .hljs-function {
+            color: var(--hljs-builtin);
+        }
+
+        .hljs-attr,
+        .hljs-selector-attr,
+        .hljs-selector-pseudo {
+            color: var(--hljs-attr);
+        }
+
+        .hljs-title,
+        .hljs-title.class_,
+        .hljs-title.function_ {
+            color: var(--hljs-title);
+        }
+
+        .hljs-meta,
+        .hljs-selector-tag,
+        .hljs-selector-id,
+        .hljs-selector-class {
+            color: var(--hljs-meta);
+        }
+
+        .hljs-addition {
+            color: var(--hljs-string);
+            background: color-mix(in srgb, var(--hljs-string) 12%, transparent);
+        }
+
+        .hljs-deletion {
+            color: #ef4444;
+            background: color-mix(in srgb, #ef4444 12%, transparent);
+        }
+
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin: 1em 0;
+        }
+
+        .task-list-item {
+            list-style-type: none !important;
+        }
+
+        .task-list-item-checkbox {
+            margin: 0 0.5em 0.25em -1.4em !important;
+            vertical-align: middle !important;
+        }
+
+
+        @page {
+            size: A4 portrait;
+            margin: 20mm 22mm;
+        }
+
+        hr {
+            break-before: page;
+            border: none;
+            height: 0;
+            margin: 0;
+            visibility: hidden;
+        }
+
+        body {
+            background: var(--prose-bg);
+        }
+
+        .markdown-body {
+            background: var(--prose-bg);
+        }
+
+        .pagedjs_page,
+        .pagedjs_sheet,
+        .pagedjs_pagebox,
+        .pagedjs_area {
+            background: var(--prose-bg) !important;
+            color: var(--prose-text) !important;
+        }
+
+        .pagedjs_page {
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+            margin: 0 auto 24px;
+            border: 1px solid var(--prose-border);
+        }
+
+        .pagedjs_page {
+            box-shadow: none;
+            margin: 0;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="markdown-body">
+        <h1>Terms of Use</h1>
+        <p><strong>Effective Date:</strong> November 20, 2026</p>
+        <p>These Terms of Use (“Terms”) govern your use of mobile and desktop applications (“Apps”), including
+            <strong>Ambiance Wallpaper</strong>, published under the <strong>Lemon Slice Studios</strong> brand by
+            <strong>lemon slice digital GmbH</strong> (“we,” “us,” or “our”).
+        </p>
+        <p>By downloading, installing, or using our Apps, you agree to these Terms. If you do not agree, please do not
+            install or use the Apps.</p>
+        <hr>
+        <h2>1. Scope and Platform Terms</h2>
+        <p>Our Apps are distributed through official digital storefronts, such as Google Play (“Store”). Your purchase,
+            download, and payment processing are also governed by the respective Store’s own Terms of Service. In the
+            event of a direct conflict regarding payment or storefront policies, the Store’s terms apply.</p>
+        <h2>2. License Grant</h2>
+        <p>Subject to your compliance with these Terms and payment of any applicable one-time purchase fee, we grant you
+            a personal, non-exclusive, non-transferable, revocable license to download, install, and use the Apps on
+            compatible devices that you own or control for your personal, non-commercial use.</p>
+        <p>You may not:</p>
+        <ul>
+            <li>Copy, modify, decompile, reverse engineer, or attempt to extract the source code of our Apps, except to
+                the extent expressly permitted by applicable mandatory law (such as § 69d and § 69e of the German
+                Copyright Act / <em>Urheberrechtsgesetz</em>).</li>
+            <li>Redistribute, sell, rent, lease, or sublicense the Apps to third parties.</li>
+        </ul>
+        <h2>3. Local-First Operation &amp; User Content</h2>
+        <p>Our Apps are built on a “Quiet Tech” and local-first principle:</p>
+        <ul>
+            <li><strong>No Accounts or Cloud:</strong> Our Apps do not require user registration and do not transmit
+                your personal files or photos to our servers.</li>
+            <li><strong>User-Selected Content:</strong> Where an App allows you to select or display your own images,
+                files, or media (such as wallpapers from your device gallery), you retain full ownership and
+                responsibility for that content. You confirm that you have the necessary rights to use any content you
+                load into the App.</li>
+        </ul>
+        <h2>4. Purchases, Updates, and Refunds</h2>
+        <ul>
+            <li><strong>One-Time Purchase:</strong> Unless explicitly stated otherwise on the Store listing, our Apps
+                are offered as one-time purchases without recurring subscriptions or hidden in-app advertising.</li>
+            <li><strong>Updates:</strong> We may release updates to improve stability, compatibility with newer
+                operating system versions, or security. We are not obligated to provide indefinite feature updates or
+                support for obsolete operating system versions.</li>
+            <li><strong>Refunds:</strong> All billing and refund requests are handled directly by the Store through
+                which you purchased the App, subject to their refund policies and applicable statutory consumer rights.
+            </li>
+        </ul>
+        <h2>5. Privacy</h2>
+        <p>We do not collect, track, or sell personal usage data through our Apps. Please refer to our <strong>Privacy
+                Policy</strong> on our website for full details on how your privacy is protected.</p>
+        <h2>6. Disclaimer and Limitation of Liability</h2>
+        <ul>
+            <li><strong>Device &amp; OS Behavior:</strong> Modern operating systems (including custom manufacturer skins
+                and battery-optimization features) may affect background behaviors, scheduled transitions, or live
+                wallpaper rendering. While we build our Apps using standard native frameworks, we cannot guarantee
+                uninterrupted operation across every hardware and OS combination.</li>
+            <li><strong>Limitation of Liability (<em>Haftungsbeschränkung</em>):</strong> We are liable without
+                limitation for damages resulting from injury to life, body, or health, as well as for damages caused by
+                intent (<em>Vorsatz</em>) or gross negligence (<em>grobe Fahrlässigkeit</em>), and under the German
+                Product Liability Act (<em>Produkthaftungsgesetz</em>). In cases of slight negligence (<em>einfache
+                    Fahrlässigkeit</em>), we are only liable for the breach of essential contractual obligations
+                (<em>Kardinalpflichten</em>), limited to the foreseeable, contract-typical damage. Otherwise, liability
+                is excluded to the maximum extent permitted by German law.</li>
+        </ul>
+        <h2>7. Governing Law</h2>
+        <p>These Terms are governed by the laws of the Federal Republic of Germany, excluding the UN Convention on
+            Contracts for the International Sale of Goods (CISG). If you are a consumer residing in the European Union,
+            you also benefit from any mandatory consumer protection provisions of the law of the country in which you
+            reside.</p>
+        <h2>8. Contact &amp; Legal Information</h2>
+        <p><strong>lemon slice digital GmbH</strong><br>
+            Brand: Lemon Slice Studios<br>
+            Germany<br>
+            Email: <a href="mailto:hello@lemonslice.de">hello@lemonslice.de</a></p>
+        <p><em>(Please refer to our website’s Legal Notice / Impressum for full statutory corporate details.)</em></p>
+
+    </div>
+
+</body>
+
+</html>
